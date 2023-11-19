@@ -1,18 +1,14 @@
 "use client";
 
-import Loader from "@/components/Loader";
-import { PostStats } from "@/components/PostStats";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import {Loading} from "@/components/shared/Loading";
+import { PostStats } from "@/components/shared/PostStats";
+import { CommentCard } from "@/components/cards/CommentCard";
+import { CommentForm } from "@/components/forms/CommentForm";
+
 import { useUserContext } from "@/context/AuthContext";
 import { useGetPostById } from "@/lib/react-query/queryAndMutation";
 import { multiFormatDateString } from "@/lib/utils";
-import { Delete, DeleteIcon, EditIcon, Trash } from "lucide-react";
+import { EditIcon, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -27,13 +23,13 @@ const PostDetails = () => {
   return (
     <div className="p-8 h-[100vh] overflow-y-scroll custom-scrollbar">
       {isPending ? (
-        <Loader />
+        <Loading />
       ) : (
         <section className="flex flex-col items-center gap-4">
         {/* post image */}
             <div className="md:h-[500px] md:w-[500px] p-7">
                 <Image
-                className="rounded-[24px] object-cover mb-5"
+                className="rounded-[24px] object-cover mb-5 "
                 src={post?.imageUrl}
                 alt="post"
                 width={500}
@@ -43,10 +39,12 @@ const PostDetails = () => {
             {/* user details */}
             <div className="flex flex-row justify-between gap-5">
              <Link href={`/profile/${post.creator.$id}`} className="flex flex-row gap-3">
-                 <img
+                 <Image
+                  width={500}
+                  height={500}
                    src={post?.creator?.imageUrl || '/default-user.png'}
                    alt='creator'
-                   className="rounded-full w-12 h-12"
+                   className="rounded-full w-12 h-12 object-cover object-top"
                  />
               <div className="flex flex-col">
                 <p className="font-bold">
@@ -72,7 +70,8 @@ const PostDetails = () => {
                         <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200"/>
                     </Link>
                 </button>
-                <button>
+                <button  
+                className={`${user.id !== post.creator.$id  && "hidden"}`}>
                     <Trash className="w-5 text-red-600 hover:text-red-400"/>
                 </button>
              </div>
@@ -93,7 +92,15 @@ const PostDetails = () => {
             </div>
             {/* poststats */}
             <div>
-              <PostStats post={post} userId={user.$id}/>
+              <PostStats post={post} userId={user.id}/>
+            </div>
+            <hr className="border border-zinc-800 w-full mt-5"/>
+            <div>
+              <CommentForm post={post} />
+            </div>
+            <hr className="border border-zinc-900 w-1/3 mt-10 "/>
+            <div>
+              <CommentCard post={post}/>
             </div>
         </section>
       )}

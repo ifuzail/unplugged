@@ -1,8 +1,8 @@
 import { GridPostList } from "./GridPostList";
-import Loader from "./Loader";
+import {Loading} from "./Loading";
 
 export const SearchResults = ({isSearchFetching, searchedPosts }) => {
-  if(isSearchFetching) return <Loader />
+  if(isSearchFetching) return <Loading />
 
   if(searchedPosts && searchedPosts.documents.length > 0) {
     return (

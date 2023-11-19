@@ -1,8 +1,8 @@
 "use client"
 
-import { GridPostList } from "@/components/GridPostList";
-import Loader from "@/components/Loader";
-import { SearchResults } from "@/components/SearchResults";
+import { GridPostList } from "@/components/shared/GridPostList";
+import {Loading} from "@/components/shared/Loading";
+import { SearchResults } from "@/components/shared/SearchResults";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
 import { useGetPosts, useSearchPosts } from "@/lib/react-query/queryAndMutation";
@@ -29,7 +29,7 @@ const Explore = () => {
   if(!posts) {
     return (
       <div className="flex items-center justify-center w-full mt-10">
-        <Loader />
+        <Loading />
       </div>
     )
   }
@@ -69,7 +69,7 @@ const Explore = () => {
       </div>
       {hasNextPage && !searchValue && (
         <div ref={ref} className="mt-10">
-          <Loader />
+          <Loading />
         </div>
       )}
     </div>

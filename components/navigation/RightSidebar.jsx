@@ -1,4 +1,4 @@
-import { Searchbar } from "../SearchResults"
+import { Searchbar } from "../shared/SearchResults"
 
 export const RightSidebar = () => {
   return (

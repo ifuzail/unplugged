@@ -1,4 +1,3 @@
-import { CompassIcon, HeartIcon, HomeIcon, LucideHome, Users2Icon } from "lucide-react"
 import {SiGooglehome} from 'react-icons/si'
 import {FaUsers} from 'react-icons/fa'
 import {MdExplore, MdFavorite} from 'react-icons/md'
@@ -39,12 +38,6 @@ export const navlinks = [
         Url: '/create-post'
     },
     {
-        id: 5,
-        Title: 'Saves',
-        image: NavIcons.SavesIcon,
-        Url: '/saves'
-    },
-    {
         id: 6,
         Title: 'More',
         image: NavIcons.MenuIcon,
@@ -67,11 +60,6 @@ export const bottomLinks = [
         id: 3,
         image: NavIcons.ExploreIcon,
         Url: '/explore'
-    },
-    {
-        id: 4,
-        image: NavIcons.SavesIcon,
-        Url: '/saves'
     },
     {
         id: 5,

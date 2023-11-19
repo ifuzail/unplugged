@@ -13,13 +13,13 @@ import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Textarea } from "../ui/textarea"
-import { FileUploader } from "../FileUploader"
+import { FileUploader } from "../shared/FileUploader"
 import {NormalPostValidation } from "@/lib/validations"
 import { useUserContext } from "@/context/AuthContext"
 import { useToast } from "../ui/use-toast"
 import { useRouter } from "next/navigation"
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queryAndMutation"
-import { EmojiBar } from "../EmojiBar"
+import { EmojiBar } from "../shared/EmojiBar"
 
 export const NormalPostForm = ({ post, action}) => {
 

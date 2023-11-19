@@ -2,13 +2,13 @@
 
 import { VideoPostCard } from "@/components/cards/VideoPostCard";
 import { PostCard } from "@/components/cards/PostCard";
-import Loader from "@/components/loader"
+import {Loading} from "@/components/shared/Loading"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetRecentPosts } from "@/lib/react-query/queryAndMutation"
 
 const Home = () => {
 
-  const {data: posts, isPending: isPostLoading, isError: isErrorPosts} = useGetRecentPosts();
+  const {data: posts, isPending: isPostLoading} = useGetRecentPosts();
 
   return (
     <div className="h-[100vh] overflow-y-scroll custom-scrollbar">
@@ -17,12 +17,12 @@ const Home = () => {
           <Tabs defaultValue="normal" className="mt-2 mb-3">
               <TabsList className='w-full bg-zinc-800'>
                 <TabsTrigger value='normal' className='w-full'>Normal</TabsTrigger>
-                <TabsTrigger value='video' className='w-full'>Video</TabsTrigger>
+                <TabsTrigger value='video' className='w-full'>Videos</TabsTrigger>
               </TabsList>
          
           <TabsContent value='normal'>
               {isPostLoading && !posts ? (
-                <Loader/>
+                <Loading/>
               ) : (
                 <ul className="flex flex-col flex-1 gap-9 w-full mt-5">
                     {posts?.documents.filter((post) => post.videoUrl === null).map((post) => (
@@ -35,7 +35,7 @@ const Home = () => {
           </TabsContent>
           <TabsContent value='video'>
               {isPostLoading && !posts ? (
-                <Loader/>
+                <Loading/>
               ) : (
                 <ul className="flex flex-col flex-1 gap-9 w-full mt-5">
                     {posts?.documents.filter((post) => post.videoUrl !== null).map((post) => (

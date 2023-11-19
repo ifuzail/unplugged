@@ -5,14 +5,14 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ImageIcon, } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useGetPostById } from "@/lib/react-query/queryAndMutation";
-import Loader from "@/components/Loader";
+import {Loading} from "@/components/shared/Loading";
 
 const EditPost = () => {
 
   const { postId } = useParams();
   const { data: post, isPending } = useGetPostById(postId || '');
 
-  if(isPending) return <Loader />
+  if(isPending) return <Loading />
 
   return (
       <ScrollArea className="bg-zinc-900 w-full h-screen p-3">

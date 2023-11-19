@@ -8,11 +8,12 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/AuthContext";
 import Link from "next/link";
+import { Loading } from "../shared/Loading";
 
 export const Topbar = () => {
   const router = useRouter();
   const { mutateAsync: signOut, isSuccess } = useSignOutAccount();
-  const { user } = useUserContext();
+  const { user, isLoading: isUserLoading } = useUserContext();
 
   useEffect(() => {
     if (isSuccess) {
@@ -23,6 +24,8 @@ export const Topbar = () => {
   return (
     <section className="bg-zinc-900 h-18 fixed top-0 z-10 w-full ">
       <div className="px-4 py-4 flex flex-row  md:hidden justify-between">
+        {isUserLoading ? <Loading /> : (
+         <>
         <Image src="/eleevan-logo-white.svg" width={100} height={100} alt="logo" />
         <div className="flex flex-row items-center">
           <Button
@@ -32,13 +35,17 @@ export const Topbar = () => {
             <LogOut className="text-zinc-200 w-5" />
           </Button>
           <Link href={`/profile/${user.id}`}>
-            <img
-              src={user.imageUrl || "default-user.png"}
+            <Image
+              width={500}
+              height={500}
+              src={user.imageUrl || "/default-user.png"}
               alt="profile"
-              className="h-8 w-8 rounded-full"
+              className="h-8 w-8 rounded-full object-cover object-top"
             />
           </Link>
         </div>
+        </>
+        )}
       </div>
     </section>
   );

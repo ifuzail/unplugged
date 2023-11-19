@@ -18,9 +18,9 @@ import { useUserContext } from "@/context/AuthContext"
 import { useToast } from "../ui/use-toast"
 import { useRouter } from "next/navigation"
 import { useCreateVideoPost } from "@/lib/react-query/queryAndMutation"
-import { VideoFileUploader } from "../VideoFileUploader"
-import { FileUploader } from "../FileUploader"
-import { EmojiBar } from "../EmojiBar"
+import { VideoFileUploader } from "../shared/VideoFileUploader"
+import { FileUploader } from "../shared/FileUploader"
+import { EmojiBar } from "../shared/EmojiBar"
 
 
 export const VideoPostForm = ({ videoPost }) => {
