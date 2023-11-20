@@ -34,7 +34,7 @@ const CreatePost = () => {
                 <NormalPostForm action='create' />
             </TabsContent>
             <TabsContent value="Video">
-                <VideoPostForm/>
+                <VideoPostForm action='create' />
             </TabsContent>
           </Tabs>
         </div>

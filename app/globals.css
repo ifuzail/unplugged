@@ -97,6 +97,9 @@
   background: #7878a3;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 .audio-player {
  @apply bg-zinc-900 shadow-xl p-2 rounded-full hover:scale-110 transition-all  

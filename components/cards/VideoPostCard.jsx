@@ -1,12 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Card, CardContent, CardFooter } from "../ui/card";
 import { multiFormatDateString } from "@/lib/utils";
 import { EditIcon } from "lucide-react";
 import { useUserContext } from "@/context/AuthContext";
-import ReactPlayer from "react-player/lazy";
-import { Button } from "../ui/button";
 import { VideoPlayer } from "../shared/VideoPlayer";
 import Image from "next/image";
 
@@ -37,13 +34,13 @@ export const VideoPostCard = ({ post }) => {
           </div>
         </Link>
         <Link
-          href={`/update-post/${post.$id}`}
+          href={`/edit-post-video/${post.$id}`}
           className={`${user.id !== post.creator.$id && "hidden"}`}>
           <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200" />
         </Link>
       </div>
       <div>
-        <Link href={`/posts/${post.$id}`}>
+        <Link href={`/post/${post.$id}`}>
           <div className="py-5">
             <p className="text-zinc-200 text-xl font-semibold hover:underline">
               {post.caption}

@@ -5,13 +5,18 @@ import { PostCard } from "@/components/cards/PostCard";
 import {Loading} from "@/components/shared/Loading"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetRecentPosts } from "@/lib/react-query/queryAndMutation"
+import StoryCard from "@/components/cards/StoryCard";
 
 const Home = () => {
 
   const {data: posts, isPending: isPostLoading} = useGetRecentPosts();
 
   return (
+    <>
     <div className="h-[100vh] overflow-y-scroll custom-scrollbar">
+        <div>
+         <StoryCard />
+        </div>
         <div className="p-5">
             <h2 className="font-bold text-left w-full md:text-3xl text-2xl mb-5">Home Feed</h2>
           <Tabs defaultValue="normal" className="mt-2 mb-3">
@@ -49,6 +54,7 @@ const Home = () => {
           </Tabs>
         </div>
     </div>
+    </>
   )
 };
 

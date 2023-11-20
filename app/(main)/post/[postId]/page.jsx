@@ -12,6 +12,7 @@ import { EditIcon, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { VideoPlayer } from "@/components/shared/VideoPlayer";
 
 const PostDetails = () => {
   const { postId } = useParams();
@@ -28,6 +29,7 @@ const PostDetails = () => {
         <section className="flex flex-col items-center gap-4">
         {/* post image */}
             <div className="md:h-[500px] md:w-[500px] p-7">
+              {post?.videoUrl === null ? (
                 <Image
                 className="rounded-[24px] object-cover mb-5 "
                 src={post?.imageUrl}
@@ -35,6 +37,9 @@ const PostDetails = () => {
                 width={500}
                 height={500}
                 />
+              ) : (
+                <VideoPlayer videoUrl={post?.videoUrl} imageUrl={post?.imageUrl}/> 
+              )}
             </div>
             {/* user details */}
             <div className="flex flex-row justify-between gap-5">
@@ -64,7 +69,7 @@ const PostDetails = () => {
              <div className="flex flex-row items-center gap-3">
                 <button>
                     <Link 
-                    href={`/edit-post/${post.$id}`}
+                    href={post?.videoUrl === null ?  `/edit-post/${post.$id}` : `/edit-post-video/${post.$id}`}
                     className={`${user.id !== post.creator.$id  && "hidden"}`}
                     >
                         <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200"/>
