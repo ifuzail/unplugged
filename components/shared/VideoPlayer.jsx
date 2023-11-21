@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { MdPlayCircleFilled } from "react-icons/md";
 import ReactPlayer from "react-player";
 
@@ -10,7 +9,7 @@ export const VideoPlayer = ({ videoUrl, imageUrl }) => {
     <div className="flex justify-center items-center relative">
       <ReactPlayer
         light={
-          <Image
+          <img
             width={800}
             height={800}
             src={imageUrl || "/default-video.png"}

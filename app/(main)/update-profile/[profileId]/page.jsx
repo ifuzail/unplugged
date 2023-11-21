@@ -180,13 +180,12 @@ const UpdateProfile = () => {
             <div className="flex gap-4 items-center justify-end">
               <Button
                 type="button"
-                className="shad-button_dark_4"
                 onClick={() => router.back()}>
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="shad-button_primary whitespace-nowrap"
+                variant='secondary'
                 disabled={isLoadingUpdate}>
                 {isLoadingUpdate && <Loading />}
                 Update Profile

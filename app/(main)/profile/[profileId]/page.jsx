@@ -75,7 +75,7 @@ const ProfilePage = () => {
           <StatsBlock value={20} label="Following" />
         </div>
         <hr className="border border-zinc-800 w-full mt-5" />
-        <p className="text-normal text-zinc-200 mt-5">{currentUser?.bio}bio</p>
+        <p className="text-normal text-zinc-200 mt-5">{currentUser?.bio}</p>
       </div>
         <div>
             <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">Posts</h2>

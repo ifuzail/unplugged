@@ -5,7 +5,7 @@ import { PostCard } from "@/components/cards/PostCard";
 import {Loading} from "@/components/shared/Loading"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetRecentPosts } from "@/lib/react-query/queryAndMutation"
-import StoryCard from "@/components/cards/StoryCard";
+import {StoryCard} from "@/components/cards/StoryCard";
 
 const Home = () => {
 
