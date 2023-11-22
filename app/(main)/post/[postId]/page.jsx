@@ -6,20 +6,35 @@ import { CommentCard } from "@/components/cards/CommentCard";
 import { CommentForm } from "@/components/forms/CommentForm";
 
 import { useUserContext } from "@/context/AuthContext";
-import { useGetPostById } from "@/lib/react-query/queryAndMutation";
+import { useDeletePost, useGetPostById } from "@/lib/react-query/queryAndMutation";
 import { multiFormatDateString } from "@/lib/utils";
 import { EditIcon, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { VideoPlayer } from "@/components/shared/VideoPlayer";
+import { Dialog, DialogContent, DialogOverlay, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const PostDetails = () => {
+
+  const router = useRouter()
   const { postId } = useParams();
   const { data: post, isPending } = useGetPostById(postId || "");
+  const {mutateAsync: deletePost, isPending: isDeletingPost} = useDeletePost()
   const { user } = useUserContext();
 
-  const handleDeletePost = () => {};
+  const handleDeletePost = async () => {
+       
+        await deletePost({
+         postId: post.$id, 
+         imageId: post.imageId,
+         videoId: post.videoId
+      })
+      
+        router.push('/')
+  
+  };
 
   return (
     <div className="p-8 h-[100vh] overflow-y-scroll custom-scrollbar">
@@ -31,7 +46,7 @@ const PostDetails = () => {
             <div className="md:h-[500px] md:w-[500px] p-7">
               {post?.videoUrl === null ? (
                 <Image
-                className="rounded-[24px] object-cover mb-5 "
+                className="rounded-[24px] object-cover mb-5 w-full h-[450px] object-top"
                 src={post?.imageUrl}
                 alt="post"
                 width={500}
@@ -75,10 +90,30 @@ const PostDetails = () => {
                         <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200"/>
                     </Link>
                 </button>
-                <button  
+                <div  
                 className={`${user.id !== post.creator.$id  && "hidden"}`}>
-                    <Trash className="w-5 text-red-600 hover:text-red-400"/>
-                </button>
+                  <Dialog>
+                    <DialogTrigger>
+                        <Trash className="w-5 text-red-600 hover:text-red-400"/>
+                    </DialogTrigger>
+                      <DialogContent className='bg-zinc-900'>
+                        <p className="text-center text-lg">Do you want to delete this post, permanently?</p>
+                        <div className="flex flex-row justify-around">
+                          <Button 
+                          onClick={() => router.back()}
+                          variant='secondary'>
+                            NO cancel it.
+                          </Button>
+                          <Button 
+                           disabled={isDeletingPost}
+                           onClick={handleDeletePost}
+                           variant='destructive'>
+                            {isDeletingPost}YES, go ahead.
+                          </Button>
+                        </div>
+                      </DialogContent>
+                  </Dialog>
+                </div>
              </div>
             </div>
             <hr className="border border-zinc-800 w-full mt-5"/>

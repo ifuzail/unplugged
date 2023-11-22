@@ -27,7 +27,7 @@ export const StoryCard = () => {
         <div className="flex flex-row p-5 gap-4 mx-2 overflow-x-auto no-scrollbar">
            {users.documents.map((user) => (
                     <Link href={`/story/${user.$id}`}>
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center" key={user.$id}>
                       <Image 
                       src={user?.imageUrl || '/default-user.png'}
                       width={500}

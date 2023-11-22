@@ -4,12 +4,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { X, XCircleIcon } from "lucide-react";
+import { XCircleIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
 export const StorySlider = ({ stories, user }) => {
   const router = useRouter();
+
   const [showSlider, setShowSlider] = useState(true);
 
   const handleCloseSlider = () => {
@@ -26,9 +27,10 @@ export const StorySlider = ({ stories, user }) => {
           showStatus={false}
           autoFocus
           selectedItem={0}
+          showThumbs={false}
           >
           {stories.map((story, index) => (
-            <div key={index}>
+            <div key={index} className="flex flex-col gap-2">
               <Image
                 src={story.imageUrl}
                 width={600}
@@ -45,7 +47,7 @@ export const StorySlider = ({ stories, user }) => {
           className="absolute top-3 right-3 w-10 h-10">
           <XCircleIcon />
         </button>
-        <Link href={`/profile/${user.id}`}>
+        <Link href={`/profile/${user.$id}`}>
           <div className="absolute top-5 flex flex-row items-center gap-2 px-5 py-3 bg-zinc-900 rounded-r-full">
             <Image
               src={user?.imageUrl}

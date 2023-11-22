@@ -45,8 +45,9 @@ export const StoryFileUploader = ({ fieldChange}) => {
          height={50}
          alt='upload the image'
         />
-        <h3 className='text-zinc-300 mb-2 mt-2'>Drag photos here</h3>
-        <p className='text-sm font-normal text-zinc-500 mb-6'>Png, Jpeg, Jpg </p>
+        <h3 className='text-zinc-300 mb-2 mt-2 font-semibold text-xl'>Drag or click to upload your story</h3>
+        <p className='text-sm font-normal text-zinc-300 mb-2'>make sure to upload vertical image. </p>
+        <p className='text-xs font-normal text-zinc-500 mb-6'>PNG , JPEG , JPG are supported only.</p>
 
        </div>
       )       

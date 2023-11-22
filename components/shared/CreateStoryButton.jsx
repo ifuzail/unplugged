@@ -1,9 +1,10 @@
 import { useUserContext } from "@/context/AuthContext"
+import { FaCirclePlus } from "react-icons/fa6";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { BsPlusCircleFill } from "react-icons/bs";
+
 
 export const CreateStoryButton = () => {
 
@@ -33,10 +34,9 @@ export const CreateStoryButton = () => {
             </Link>
         </div>
         <button 
-        className="absolute bottom-2 left-14"
+        className="absolute bottom-1 left-14 border-4 rounded-full border-zinc-900 bg-zinc-900 text-primary-Eleevan"
         onClick={onclick}>
-            <BsPlusCircleFill size={20}
-            />
+            <FaCirclePlus size={20}/>
         </button>
        </div>
     </div>
