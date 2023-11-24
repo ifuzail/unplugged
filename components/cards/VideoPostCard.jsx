@@ -6,6 +6,7 @@ import { EditIcon } from "lucide-react";
 import { useUserContext } from "@/context/AuthContext";
 import { VideoPlayer } from "../shared/VideoPlayer";
 import Image from "next/image";
+import { PostStats } from "../shared/PostStats";
 
 export const VideoPostCard = ({ post }) => {
   const { user } = useUserContext();
@@ -56,6 +57,9 @@ export const VideoPostCard = ({ post }) => {
       <div className="p-5">
         <VideoPlayer videoUrl={post?.videoUrl} imageUrl={post?.imageUrl} />
       </div>
+      <div className="p-5">
+          <PostStats post={post} userId={user.id} />
+        </div>
     </div>
   );
 };

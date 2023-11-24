@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { XCircleIcon } from "lucide-react";
+import { Trash, XCircleIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -17,6 +17,10 @@ export const StorySlider = ({ stories, user }) => {
     setShowSlider(false);
     router.push("/");
   };
+
+  const handleDeleteStory = () => {
+
+  }
 
   return (
     <section className="p-5 w-full flex justify-center md:mt-0 mt-10 relative">
@@ -44,7 +48,7 @@ export const StorySlider = ({ stories, user }) => {
 
         <button
           onClick={handleCloseSlider}
-          className="absolute top-3 right-3 w-10 h-10">
+          className="absolute md:top-3 top-1 md:right-3 right-1 w-10 h-10">
           <XCircleIcon />
         </button>
         <Link href={`/profile/${user.$id}`}>

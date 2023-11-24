@@ -29,7 +29,7 @@ export const CreateStoryButton = () => {
         <div className="flex flex-col gap-2">
             <Link href={`/profile/${user.id}`}
             >
-                <h2 className="font-bold text-2xl text-zinc-200 hover:text-primary-Eleevan transition">{user?.name}</h2>
+                <h2 className="font-bold md:text-2xl text-lg text-zinc-200 hover:text-primary-Eleevan transition">{user?.name}</h2>
                 <p className="text-sm text-zinc-400">@{user?.username}</p>
             </Link>
         </div>

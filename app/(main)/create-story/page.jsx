@@ -35,17 +35,10 @@ import { toast } from "@/components/ui/use-toast"
 
   const onSubmit = async (values) => {
     
-     const newStory = await createStory({
+     await createStory({
       ...values,
        userId: user.id,
-     })
-
-     if(!newStory) {
-      toast({
-        title: "Please try again"
-      })
-     }
-      
+     })   
      router.push('/');
   }
 

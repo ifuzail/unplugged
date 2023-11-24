@@ -1,11 +1,13 @@
 "use client";
 
+import { FollowButton } from "@/components/shared/FollowButton";
 import { GridPostList } from "@/components/shared/GridPostList";
 import { Loading } from "@/components/shared/Loading";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useUserContext } from "@/context/AuthContext";
-import { useGetUserById } from "@/lib/react-query/queryAndMutation";
+import {
+  useGetUserById,
+  useGetUsers,
+} from "@/lib/react-query/queryAndMutation";
 import { Edit2Icon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,13 +25,18 @@ const ProfilePage = () => {
   const { user } = useUserContext();
 
   const { data: currentUser } = useGetUserById(profileId || "");
+  const { data: allusers } = useGetUsers();
+
+  const currentUserFollowed = allusers?.documents?.filter((user) =>
+    user?.followers?.includes(currentUser?.$id)
+  );
 
   if (!currentUser)
-  return (
-    <div className="flex-center w-full h-full">
-      <Loading />
-    </div>
-  );
+    return (
+      <div className="flex-center w-full h-full">
+        <Loading />
+      </div>
+    );
 
   return (
     <section className="flex flex-col  h-[100vh] overflow-y-scroll custom-scrollbar">
@@ -37,14 +44,15 @@ const ProfilePage = () => {
         <div className="flex flex-row items-center justify-between p-5">
           <div className="flex flex-row items-center gap-5 justify-start">
             <Image
+              loading="lazy"
               src={currentUser?.imageUrl || "/default-user.png"}
-              width={800}
-              height={800}
+              width={500}
+              height={500}
               alt="profile-image"
               className="md:w-28 md:h-28 w-16 h-16 rounded-full object-cover object-top"
             />
             <div className="flex flex-col justify-start items-start">
-              <h1 className="text-4xl font-semibold text-zinc-50">
+              <h1 className="md:text-4xl text-xl font-semibold text-zinc-50">
                 {currentUser?.name}
               </h1>
               <p className="text-normal font-thin text-zinc-400 mt-2">
@@ -61,9 +69,7 @@ const ProfilePage = () => {
                 </Link>
               </div>
               <div className={`${user.id === profileId && "hidden"}`}>
-                <Button type="button" variant="secondary" className=" px-8 mt-5">
-                  Follow
-                </Button>
+                <FollowButton currentUser={currentUser} />
               </div>
             </div>
           </div>
@@ -71,16 +77,21 @@ const ProfilePage = () => {
         <hr className="border border-zinc-800 w-full mt-5" />
         <div className="flex flex-row space-x-8 justify-center mt-6">
           <StatsBlock value={currentUser?.posts?.length} label="Posts" />
-          <StatsBlock value={20} label="Followers" />
-          <StatsBlock value={20} label="Following" />
+          <StatsBlock
+            value={currentUser?.followers?.length}
+            label="Followers"
+          />
+          <StatsBlock value={currentUserFollowed?.length} label="Following" />
         </div>
         <hr className="border border-zinc-800 w-full mt-5" />
         <p className="text-normal text-zinc-200 mt-5">{currentUser?.bio}</p>
       </div>
-        <div>
-            <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">Posts</h2>
-         <GridPostList posts={currentUser?.posts} showUser={false} />
-        </div>
+      <div>
+        <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">
+          Posts
+        </h2>
+        <GridPostList posts={currentUser?.posts} showUser={false} />
+      </div>
     </section>
   );
 };

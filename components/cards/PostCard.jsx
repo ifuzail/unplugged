@@ -46,7 +46,7 @@ export const PostCard = ({ post }) => {
             </p>
             <ul className="flex gap-1 mt-2 text-zinc-300">
               {post.tags.map((tag, index) => (
-                <li key={`${tag}${index}`} className="">
+                <li key={`${tag}${index}`}>
                   #{tag}
                 </li>
               ))}
@@ -62,7 +62,7 @@ export const PostCard = ({ post }) => {
           />
         </Link>
         <div>
-          <PostStats post={post} userId={user.$id} />
+          <PostStats post={post} userId={user.id} />
         </div>
       </CardContent>
     </Card>

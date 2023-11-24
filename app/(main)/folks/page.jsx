@@ -4,10 +4,13 @@ import { AllUsersCard } from "@/components/cards/AllUsersCard";
 import { Loading } from "@/components/shared/Loading";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/components/ui/use-toast";
+import { useUserContext } from "@/context/AuthContext";
 import { useGetUsers } from "@/lib/react-query/queryAndMutation";
 
 const Folks = () => {
   const { toast } = useToast();
+
+  const {user} = useUserContext();
 
   const {data: creators, isPending, isError: isErrorCreators} = useGetUsers();
 
@@ -23,11 +26,12 @@ const Folks = () => {
           <Loading />
         ) : (
           <ul className="flex flex-col gap-6 justify-start mt-10 ">
-            {creators?.documents.map((creator) => (
+            {creators?.documents.filter((creator) => creator?.$id  !== user.id).map((creator) => (
               <li key={creator?.$id} className="flex-1 min-w-[200px] w-full bg-zinc-800 p-3 rounded-l-full rounded-r-md">
                 <AllUsersCard user={creator} />
               </li>
-            ))}
+            ))
+            }
           </ul>
         )}
       </div>

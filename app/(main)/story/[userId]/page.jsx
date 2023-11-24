@@ -3,7 +3,7 @@
 import { Loading } from "@/components/shared/Loading"
 import {StorySlider} from "@/components/shared/StorySlider"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogClose, DialogOverlay } from "@/components/ui/dialog"
+import { Dialog, DialogOverlay } from "@/components/ui/dialog"
 import { useGetUserById } from "@/lib/react-query/queryAndMutation"
 import { useParams } from "next/navigation"
 
