@@ -6,32 +6,19 @@ import { CommentCard } from "@/components/cards/CommentCard";
 import { CommentForm } from "@/components/forms/CommentForm";
 
 import { useUserContext } from "@/context/AuthContext";
-import {
-  useDeletePost,
-  useGetPostById,
-} from "@/lib/react-query/queryAndMutation";
+import { useGetPostById } from "@/lib/react-query/queryAndMutation";
 import { multiFormatDateString } from "@/lib/utils";
-import { EditIcon, Trash } from "lucide-react";
+import { EditIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { VideoPlayer } from "@/components/shared/VideoPlayer";
-
+import { DeleteButton } from "@/components/shared/DeleteButton";
 
 const PostDetails = () => {
-  const router = useRouter();
   const { postId } = useParams();
   const { data: post, isPending } = useGetPostById(postId || "");
-  const { mutate: deletePost } = useDeletePost();
   const { user } = useUserContext();
-
-  const handleDeletePost = () => {
-      deletePost({
-      postId: postId,
-      imageId: post?.imageId,
-      videoId: post?.videoId,
-    });
-  };
 
   return (
     <div className="p-8 h-[100vh] overflow-y-scroll custom-scrollbar">
@@ -43,6 +30,7 @@ const PostDetails = () => {
           <div className="md:h-[500px] md:w-[500px] p-7">
             {post?.videoUrl === null ? (
               <Image
+                priority
                 className="rounded-[24px] object-cover mb-5 w-full h-[450px] object-top"
                 src={post?.imageUrl}
                 alt="post"
@@ -84,15 +72,11 @@ const PostDetails = () => {
                       ? `/edit-post/${post.$id}`
                       : `/edit-post-video/${post.$id}`
                   }
-                  className={`${user.id !== post.creator.$id && "hidden"}`}>
+                  className={`${user?.id !== post.creator.$id && "hidden"}`}>
                   <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200" />
                 </Link>
               </button>
-              <div className={`${user.id !== post.creator.$id && "hidden"}`}>
-                <button onClick={handleDeletePost}>
-                  <Trash className="w-5 text-red-600 hover:text-red-400" />
-                </button>
-              </div>
+              <DeleteButton post={post} />
             </div>
           </div>
           <hr className="border border-zinc-800 w-full mt-5" />

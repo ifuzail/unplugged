@@ -3,6 +3,7 @@
 import { FollowButton } from "@/components/shared/FollowButton";
 import { GridPostList } from "@/components/shared/GridPostList";
 import { Loading } from "@/components/shared/Loading";
+import { StoryList } from "@/components/shared/StoryList";
 import { useUserContext } from "@/context/AuthContext";
 import {
   useGetUserById,
@@ -91,6 +92,12 @@ const ProfilePage = () => {
           Posts
         </h2>
         <GridPostList posts={currentUser?.posts} showUser={false} />
+      </div>
+      <div>
+        <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">
+          Stories
+        </h2>
+        <StoryList user={currentUser} />
       </div>
     </section>
   );

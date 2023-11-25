@@ -18,9 +18,7 @@ export const StorySlider = ({ stories, user }) => {
     router.push("/");
   };
 
-  const handleDeleteStory = () => {
-
-  }
+ 
 
   return (
     <section className="p-5 w-full flex justify-center md:mt-0 mt-10 relative">
@@ -42,6 +40,7 @@ export const StorySlider = ({ stories, user }) => {
                 alt={`story-${index}`}
                 className="md:w-56 w-28 max-h-screen object-cover object-top"
               />
+              <h1 className="text-5xl absolute top-28">{story?.$createdAt}</h1>
             </div>
           ))}
         </Carousel>
