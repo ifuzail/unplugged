@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { StoryValidation } from "@/lib/validations";
 import { useUserContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { StoryFileUploader } from "@/components/shared/StoryFileUploader";
+import { StoryFileUploader } from "@/components/uploaders/StoryFileUploader";
 import { useCreateStory } from "@/lib/react-query/queryAndMutation";
 
 

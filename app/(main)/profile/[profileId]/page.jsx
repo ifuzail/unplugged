@@ -1,6 +1,6 @@
 "use client";
 
-import { FollowButton } from "@/components/shared/FollowButton";
+import { FollowButton } from "@/components/custombuttons/FollowButton";
 import { GridPostList } from "@/components/shared/GridPostList";
 import { Loading } from "@/components/shared/Loading";
 import { StoryList } from "@/components/shared/StoryList";

@@ -78,11 +78,11 @@ const UpdateProfile = () => {
           }; 
 
   return (
-    <ScrollArea className="bg-zinc-900 w-full h-screen p-3">
+    <ScrollArea className="bg-dark-3 w-full h-screen p-3">
          <div className="p-5">
         <div className="flex items-center gap-2 mt-10 justify-start">
           <Edit2Icon size={28}/>
-          <h2 className='font-bold text-2xl text-zinc-200'>Edit Profile</h2>
+          <h2 className='h2-bold text-light-2'>Edit Profile</h2>
         </div>
         <Form {...form}>
           <form
@@ -99,7 +99,7 @@ const UpdateProfile = () => {
                       mediaUrl={currentUser.imageUrl}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='shad-form_message'/>
                 </FormItem>
               )}
             />
@@ -109,9 +109,9 @@ const UpdateProfile = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel className='shad-form_label'>Name</FormLabel>
                   <FormControl>
-                    <Input type="text" className='bg-zinc-800 border-none' {...field} />
+                    <Input type="text" className='shad-input' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,11 +123,11 @@ const UpdateProfile = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel className='shad-form_label'>Username</FormLabel>
                   <FormControl>
                     <Input
                       type="text"
-                      className='bg-zinc-800 border-none'
+                      className='shad-input'
                       {...field}
                       disabled
                     />
@@ -142,11 +142,11 @@ const UpdateProfile = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className='shad-form_label'>Email</FormLabel>
                   <FormControl>
                     <Input
                       type="text"
-                      className='bg-zinc-800 border-none'
+                      className='shad-input'
                       {...field}
                       disabled
                     />
@@ -161,10 +161,10 @@ const UpdateProfile = () => {
               name="bio"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Bio</FormLabel>
+                  <FormLabel className='shad-form_label'>Bio</FormLabel>
                   <FormControl>
                   <div className="relative">
-                  <Textarea {...field}  className='bg-zinc-800 border-none'/>
+                  <Textarea {...field}  className='shad-textarea'/>
                   <div className="absolute top-7 right-4 z-10">
                         <EmojiBar
                           onChange={(emoji) => field.onChange(`${field.value} ${emoji}`)}
@@ -180,12 +180,13 @@ const UpdateProfile = () => {
             <div className="flex gap-4 items-center justify-end">
               <Button
                 type="button"
+                className='shad-button_ghost'
                 onClick={() => router.back()}>
                 Cancel
               </Button>
               <Button
                 type="submit"
-                variant='secondary'
+                className='shad-button_dark_4'
                 disabled={isLoadingUpdate}>
                 {isLoadingUpdate && <Loading />}
                 Update Profile

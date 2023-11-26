@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FollowButton } from "../shared/FollowButton";
+import { FollowButton } from "../custombuttons/FollowButton";
 
 export const AllUsersCard = ({ user }) => {
   return (

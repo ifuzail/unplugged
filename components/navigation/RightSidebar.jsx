@@ -1,6 +1,6 @@
 "use client"
 
-import { CreateStoryButton } from "../shared/CreateStoryButton"
+import { CreateStoryButton } from "../custombuttons/CreateStoryButton"
 import { FollowerList } from "../shared/FollowerList";
 
 export const RightSidebar = () => {

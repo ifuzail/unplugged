@@ -14,8 +14,8 @@ import {
   useCreateVideoPost,
   useUpdateVideoPost,
 } from "@/lib/react-query/queryAndMutation";
-import { VideoFileUploader } from "../shared/VideoFileUploader";
-import { FileUploader } from "../shared/FileUploader";
+import { VideoFileUploader } from "../uploaders/VideoFileUploader";
+import { FileUploader } from "../uploaders/FileUploader";
 import { EmojiBar } from "../shared/EmojiBar";
 
 export const VideoPostForm = ({ videoPost, action }) => {

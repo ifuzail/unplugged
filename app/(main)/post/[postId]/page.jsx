@@ -13,7 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { VideoPlayer } from "@/components/shared/VideoPlayer";
-import { DeleteButton } from "@/components/shared/DeleteButton";
+import { DeleteButton } from "@/components/custombuttons/DeleteButton";
 
 const PostDetails = () => {
 

@@ -11,7 +11,7 @@ import Link from "next/link";
 import { Loading } from "../shared/Loading";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
 import { RightSidebar } from "./RightSidebar";
-import { CreateStoryButton } from "../shared/CreateStoryButton";
+import { CreateStoryButton } from "../custombuttons/CreateStoryButton";
 import { FollowerList } from "../shared/FollowerList";
 
 export const Topbar = () => {
