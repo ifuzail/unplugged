@@ -1,14 +1,24 @@
-import { getRecentStories, getStoryById } from "@/lib/app-write/api"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export const StoryList = ({user}) => {
 
- let storyId
+  const params = useParams()
+
   return (
-    <div>
-        <Link href={`/story/${user.$id}/${storyId}`}>
-          storyList
-        </Link>
-    </div>
-  )
-}
+    <ul className="grid md:grid-cols-2 grid-cols-1 gap-3 p-5">
+      {user?.stories?.map((story) => (
+      <Link href={`/story/${user?.$id}/${story?.$id}`}>
+        <Image
+          src={story?.imageUrl}
+          width={500}
+          height={500}
+          alt="image-post"
+          className="h-[360px] w-[220px] object-cover rounded-xl "
+        />
+      </Link>
+      ))}
+    </ul>
+  );
+};

@@ -4,12 +4,13 @@ import { FollowButton } from "@/components/shared/FollowButton";
 import { GridPostList } from "@/components/shared/GridPostList";
 import { Loading } from "@/components/shared/Loading";
 import { StoryList } from "@/components/shared/StoryList";
+import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import {
   useGetUserById,
   useGetUsers,
 } from "@/lib/react-query/queryAndMutation";
-import { Edit2Icon } from "lucide-react";
+import { Edit2Icon, PlusCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -97,7 +98,21 @@ const ProfilePage = () => {
         <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">
           Stories
         </h2>
-        <StoryList user={currentUser} />
+        {currentUser?.stories.length === 0 ? (
+          <div className="flex flex-col justify-center items-center mb-5">
+            <p className="p-5 text-center text-zinc-400 text-sm">No stories. Please create one.</p>
+            <Link href={`/create-story`}>
+              <Button 
+                variant='secondary'
+                className='text-xs'
+              >
+               <PlusCircle className="w-5 h-5 mr-2"/> Create Story
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <StoryList user={currentUser} />
+        )}
       </div>
     </section>
   );
