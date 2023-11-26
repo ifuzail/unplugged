@@ -60,9 +60,8 @@ export const DeleteButton = ({ post }) => {
     <div>
       <Button
         onClick={handleDeletePost}
-        variant="ghost"
         className={user.id !== post?.creator.$id && "hidden"}>
-        <Trash className={isLoadingDelete ? "text-red-500" : "text-red-600"} />
+        <Trash className='w-5 h-5 text-red' />
       </Button>
     </div>
   );

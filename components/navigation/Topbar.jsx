@@ -26,8 +26,8 @@ export const Topbar = () => {
   }, [isSuccess]);
 
   return (
-    <section className="bg-zinc-900 h-18 fixed top-0 z-10 w-full ">
-      <div className="px-4 py-4 flex flex-row  md:hidden justify-between items-center">
+    <section className="topbar md:hidden block">
+      <div className="px-4 py-4 flex flex-row md:hidden justify-between items-center">
         {isUserLoading ? (
           <Loading />
         ) : (
@@ -67,7 +67,7 @@ export const Topbar = () => {
                         <CreateStoryButton />
                       </SheetClose>
                       <hr className="border border-zinc-800 w-full mt-5 mb-5" />
-                      <p className="text-lg font-bold text-zinc-200 px-5">
+                      <p className="h3-bold text-light-3 text-center">
                         Folks, you're following
                       </p>
                       <FollowerList />

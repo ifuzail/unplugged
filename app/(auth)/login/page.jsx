@@ -3,21 +3,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { useToast } from "@/components/ui/use-toast";
-import {
-  useSignInAccount,
-} from "@/lib/react-query/queryAndMutation";
+import {useSignInAccount } from "@/lib/react-query/queryAndMutation";
 import { useUserContext } from "@/context/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,12 +21,10 @@ const LoginPage = () => {
   const { toast } = useToast();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
-  // we are getting mutation function and isloading parameter from usecreateuserAccount func. and we rename mutateasync to createuseraccount.
 
   //mutations//
   const { mutateAsync: signInAccount } =
     useSignInAccount();
-  //mutations//
 
   const form = useForm({
     resolver: zodResolver(LoginForm),
@@ -72,74 +61,75 @@ const LoginPage = () => {
   return (
     <>
       <Form {...form}>
-        <div className="p-10 md:absolute md:z-10 md:top-16 top-16 md:left-[30%] bg-zinc-950 rounded-lg mx-10 md:my-0 my-4">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-            <Image
-              src="/eleevan-logo-white.svg"
-              width={170}
-              height={170}
-              alt="logo"
-              className="md:mx-[100px] mx-auto"
-            />
-            <h2 className="text-center md:text-3xl font-bold mt-5 text-primary-Eleevan">
-              Login to your account
-            </h2>
-            <p className="text-center text-xs text-zinc-300 mt-1 ">
-             Welcome to Eleevan, Please enter your details
-            </p>
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>email</FormLabel>
-                  <FormControl>
-                    <Input type="email" {...field} className='text-zinc-900'/>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>password</FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="py-2">
-              <Button type="submit" variant="green">
-                {isUserLoading ? (
-                  <div>Loading...</div>
-                ) : (
-                  "Login"
+        <div className="flex-center">
+          <div className="sm:w-420 flex-center flex-col p-5">
+              <Image
+                src="/eleevan-logo-white.svg"
+                width={120}
+                height={120}
+                alt="logo"
+              />
+              <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+                Login to your account
+              </h2>
+              <p  className="text-light-3 small-medium md:base-regular mt-2">
+              Welcome to Eleevan, Please enter your details
+              </p>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="shad-form_label">email</FormLabel>
+                    <FormControl>
+                      <Input  type="text" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
                 )}
-              </Button>
-            </div>
-            <p className="text-small-regular text-light-2 text-center mt-2">
-            Not registered?
-            <Link
-              href="/signup"
-              className="text-blue-300 text-sm font-semibold ml-1 hover:text-blue-500">
-              Sign up
-            </Link>
-          </p>
-          </form>
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="shad-form_label">password</FormLabel>
+                    <FormControl>
+                      <Input type="password" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="py-2">
+                <Button type="submit" className="shad-button_primary">
+                  {isUserLoading ? (
+                    <div>Loading...</div>
+                  ) : (
+                    "Log in"
+                  )}
+                </Button>
+              </div>
+              <p className="text-small-regular text-light-2 text-center mt-2">
+              Don&apos;t have an account?
+              <Link
+                href="/signup"
+                className="text-primary-500 text-small-semibold ml-1">
+                Sign up
+              </Link>
+            </p>
+            </form>
+          </div>
+          <Image 
+            src='/cover-image.jpg'
+            width={1000}
+            height={1000}
+            alt="image"
+            className="hidden xl:block h-screen w-[70%] object-cover opacity-70"
+            />
         </div>
       </Form>
-
-      <div className="md:w-full md:relative ">
-        <img
-          className="object-cover w-full md:block hidden h-screen opacity-20"
-          src="/login-image.jpg"
-        />
-      </div>
     </>
   );
 };

@@ -41,7 +41,7 @@ const ProfilePage = () => {
     );
 
   return (
-    <section className="flex flex-col  h-[100vh] overflow-y-scroll custom-scrollbar">
+    <section className="container-scroll">
       <div className="p-10">
         <div className="flex flex-row items-center justify-between p-5">
           <div className="flex flex-row items-center gap-5 justify-start">
@@ -54,20 +54,22 @@ const ProfilePage = () => {
               className="md:w-28 md:h-28 w-16 h-16 rounded-full object-cover object-top"
             />
             <div className="flex flex-col justify-start items-start">
-              <h1 className="md:text-4xl text-xl font-semibold text-zinc-50">
+              <h1 className="md:h1-bold h3-bold text-zinc-50">
                 {currentUser?.name}
               </h1>
-              <p className="text-normal font-thin text-zinc-400 mt-2">
+              <p className="base-medium text-light-4">
                 @{currentUser?.username}
               </p>
               <div className={`${user.id !== currentUser?.$id && "hidden"}`}>
                 <Link
                   href={`/update-profile/${currentUser?.$id}`}
-                  className={`mt-5 h-10 bg-zinc-900 text-zinc-100 px-4 py-2 flex justify-center items-center gap-2 rounded-lg font-normal hover:text-primary-Eleevan ${
+                  className={`mt-5 h-10 bg-secondary-500 text-dark-3 px-4 py-2 flex justify-center items-center gap-2 rounded-lg font-normal hover:text-primary-Eleevan ${
                     user.id !== currentUser?.$id && "hidden"
                   }`}>
                   <Edit2Icon className="w-4 h-4" />
-                  <p className="flex whitespace-nowrap text-sm">Edit Profile</p>
+                  <p className="flex whitespace-nowrap base-medium">
+                    Edit Profile
+                  </p>
                 </Link>
               </div>
               <div className={`${user.id === profileId && "hidden"}`}>
@@ -89,26 +91,42 @@ const ProfilePage = () => {
         <p className="text-normal text-zinc-200 mt-5">{currentUser?.bio}</p>
       </div>
       <div>
-        <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">
-          Posts
-        </h2>
-        <GridPostList posts={currentUser?.posts} showUser={false} />
+        <h2 className="h2-bold text-light-2 px-5 mt-5">Posts</h2>
+        {currentUser?.posts.length === 0 ? (
+          <div className="flex flex-col justify-center items-center mb-5">
+            <p className="p-5 text-center text-light-4 base-medium">
+              No posts. Please create one.
+            </p>
+            {user.id === profileId ? (
+              <Link href={`/create-post`}>
+                <Button className="shad-button_dark_4 base-semibold">
+                  <PlusCircle className="w-5 h-5 mr-2" /> Create Post
+                </Button>
+              </Link>
+            ) : (
+              ""
+            )}
+          </div>
+        ) : (
+          <GridPostList posts={currentUser?.posts} showUser={false} />
+        )}
       </div>
       <div>
-        <h2 className="text-3xl font-semibold text-zinc-200 px-5 mt-5">
-          Stories
-        </h2>
+        <h2 className="h2-bold text-light-2 px-5 mt-5">Stories</h2>
         {currentUser?.stories.length === 0 ? (
           <div className="flex flex-col justify-center items-center mb-5">
-            <p className="p-5 text-center text-zinc-400 text-sm">No stories. Please create one.</p>
-            <Link href={`/create-story`}>
-              <Button 
-                variant='secondary'
-                className='text-xs'
-              >
-               <PlusCircle className="w-5 h-5 mr-2"/> Create Story
-              </Button>
-            </Link>
+            <p className="p-5 text-center text-light-4 base-medium">
+              No stories. Please create one.
+            </p>
+            {user.id === profileId ? (
+              <Link href={`/create-story`}>
+                <Button className="shad-button_dark_4 base-semibold">
+                  <PlusCircle className="w-5 h-5 mr-1" /> Create Story
+                </Button>
+              </Link>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           <StoryList user={currentUser} />

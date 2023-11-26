@@ -1,14 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,12 +18,12 @@ import { VideoFileUploader } from "../shared/VideoFileUploader";
 import { FileUploader } from "../shared/FileUploader";
 import { EmojiBar } from "../shared/EmojiBar";
 
-
 export const VideoPostForm = ({ videoPost, action }) => {
-  
+
   const router = useRouter();
   const { toast } = useToast();
   const { user } = useUserContext();
+
   const { mutateAsync: createVideoPost, isPending: isLoadingCreate } =
     useCreateVideoPost();
   const { mutateAsync: updateVideoPost, isPending: isLoadingUpdate } =
@@ -88,13 +81,13 @@ export const VideoPostForm = ({ videoPost, action }) => {
           name="caption"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Caption</FormLabel>
+              <FormLabel className="shad-form_label">Caption</FormLabel>
               <FormControl>
                 <div className="relative">
                   <Textarea
                     placeholder="caption"
                     {...field}
-                    className="bg-zinc-800 border-none"
+                    className="shad-textarea custom-scrollbar"
                   />
                   <div className="absolute top-7 right-4 z-10">
                     <EmojiBar
@@ -105,7 +98,7 @@ export const VideoPostForm = ({ videoPost, action }) => {
                   </div>
                 </div>
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
@@ -121,7 +114,7 @@ export const VideoPostForm = ({ videoPost, action }) => {
                   mediaUrl={videoPost?.videoUrl}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
@@ -130,14 +123,14 @@ export const VideoPostForm = ({ videoPost, action }) => {
           name="imageFile"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Add Thumbnail</FormLabel>
+              <FormLabel className="shad-form_label">Add Thumbnail</FormLabel>
               <FormControl>
                 <FileUploader
                   fieldChange={field.onChange}
                   mediaUrl={videoPost?.imageUrl}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
@@ -146,15 +139,15 @@ export const VideoPostForm = ({ videoPost, action }) => {
           name="location"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Add Location</FormLabel>
+              <FormLabel className="shad-form_label">Add Location</FormLabel>
               <FormControl>
                 <Input
-                  type="text"
-                  className="bg-zinc-800 border-none"
+                   type="text"
+                   className="shad-input"
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
@@ -163,29 +156,30 @@ export const VideoPostForm = ({ videoPost, action }) => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Add Tags (separated by comma " , ")</FormLabel>
+              <FormLabel className="shad-form_label">Add Tags (separated by comma " , ")</FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   type="text"
-                  className="bg-zinc-800 border-none"
+                  className="shad-input"
                   placeholder="Cats, Dogs, Birds..."
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
-        <div className="flex flex-row gap-2 ">
-          <Button onClick={() => router.back()} type="button" variant="ghost">
+        <div className="flex items-center flex-row gap-2">
+          <Button onClick={() => router.back()}
+           type="button" 
+           variant="ghost"
+           >
             Cancel
           </Button>
-
           <Button
             onSubmit={onSubmit}
             type="submit"
-            variant="green"
-            className="hover:text-white hover:bg-zinc-800"
+            className="shad-button_primary whitespace-nowrap"
             disabled={isLoadingCreate || isLoadingUpdate}>
             {isLoadingCreate || (isLoadingUpdate && "Loading...")}
             {action} Post

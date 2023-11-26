@@ -21,11 +21,10 @@ import Image from "next/image";
 import { useCreateComment } from "@/lib/react-query/queryAndMutation";
 import { useUserContext } from "@/context/AuthContext";
 
-export const CommentForm = ({post}) => {
-
-  const {user} = useUserContext();
+export const CommentForm = ({ post }) => {
+  const { user } = useUserContext();
   const { toast } = useToast();
-  const {mutateAsync: createComment, isPending} = useCreateComment();
+  const { mutateAsync: createComment, isPending } = useCreateComment();
 
   const form = useForm({
     resolver: zodResolver(CommentFormValidation),
@@ -47,10 +46,8 @@ export const CommentForm = ({post}) => {
       });
 
       form.reset();
-    }
-
-    else {
-        form.reset();
+    } else {
+      form.reset();
     }
   };
 
@@ -60,12 +57,12 @@ export const CommentForm = ({post}) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-row gap-4 w-full items-center">
         <div>
-           <Image
+          <Image
             width={500}
             height={500}
-            src={user?.imageUrl || '/default-user.png'}
+            src={user?.imageUrl || "/default-user.png"}
             className="w-16 h-16 rounded-xl object-cover object-top"
-           />
+          />
         </div>
         <FormField
           control={form.control}
@@ -77,7 +74,7 @@ export const CommentForm = ({post}) => {
                   <Textarea
                     placeholder="comment here"
                     {...field}
-                    className="bg-zinc-900 border-none md:w-[500px] w-[250px]"
+                    className="bg-dark-3 border-none md:w-[500px] w-[250px]"
                   />
                   <div className="absolute top-8 right-4 z-10 flex gap-2  items-center">
                     <EmojiBar
@@ -91,7 +88,7 @@ export const CommentForm = ({post}) => {
                       variant="ghost"
                       size="icon"
                       disabled="">
-                      <SendIcon className="w-5 h-5 text-zinc-500" />
+                      <SendIcon className="w-5 h-5 text-light-3" />
                     </Button>
                   </div>
                 </div>

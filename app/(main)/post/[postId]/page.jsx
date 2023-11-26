@@ -16,9 +16,11 @@ import { VideoPlayer } from "@/components/shared/VideoPlayer";
 import { DeleteButton } from "@/components/shared/DeleteButton";
 
 const PostDetails = () => {
+
   const { postId } = useParams();
-  const { data: post, isPending } = useGetPostById(postId || "");
   const { user } = useUserContext();
+
+  const { data: post, isPending } = useGetPostById(postId || "");
 
   return (
     <div className="p-8 h-[100vh] overflow-y-scroll custom-scrollbar">
@@ -73,7 +75,7 @@ const PostDetails = () => {
                       : `/edit-post-video/${post.$id}`
                   }
                   className={`${user?.id !== post.creator.$id && "hidden"}`}>
-                  <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200" />
+                  <EditIcon className="w-5 text-primary-500 hover:text-primary-600" />
                 </Link>
               </button>
               <DeleteButton post={post} />

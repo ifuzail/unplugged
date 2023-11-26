@@ -24,10 +24,10 @@ export const CommentCard = ({post}) => {
                             />
                         </div>
                         <div
-                        className="bg-zinc-900 md:w-[400px] h-auto p-3 rounded-xl flex flex-col"
+                        className="bg-light-3 md:w-[400px] h-auto p-3 rounded-xl flex flex-col"
                         >
-                        <p className="text-zinc-100 md:text-sm text-xs mb-2 ">{comment.message}</p>
-                        <p className="text-xs text-zinc-400">{multiFormatDateString(comment.$createdAt)}</p>
+                        <p className="text-dark-3 md:base-medium mb-2 ">{comment.message}</p>
+                        <p className="subtle-semibold text-dark-4">{multiFormatDateString(comment.$createdAt)}</p>
                         </div>
                     </div>
                   ))}    

@@ -31,8 +31,8 @@ export const Navlinks = () => {
               <div key={navlink.id}>
                 <Link
                   href={navlink.Url}
-                  className={`flex items-center gap-2 hover:bg-zinc-950 p-5 rounded-lg transition mx-2 text-zinc-300 ${
-                    isActive && "font-black text-zinc-100"
+                  className={`flex items-center gap-2 hover:bg-light-3 p-5 rounded-lg transition mx-2 text-zinc-300 ${
+                    isActive && "font-bold text-primary-600"
                   }`}
                 >
                   <i>{navlink.image}</i> <span>{navlink.Title}</span>
@@ -57,11 +57,9 @@ export const Navlinks = () => {
                 </PopoverTrigger>
                 <PopoverContent className='bg-zinc-700 border-none '>
                   <Button
-                    className='bg-transparent hover:bg-transparent border-none'
-                    onClick={() => signOut()}
-                    
+                    onClick={() => signOut()} 
                   >
-                    <h1 className="text-md text-zinc-100 ">Logout</h1>
+                    <h1 className="base-regular text-zinc-100 ">Logout</h1>
                   </Button>
                 </PopoverContent>
               </Popover>

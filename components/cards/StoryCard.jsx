@@ -24,7 +24,6 @@ export const StoryCard = () => {
     creator?.followers?.includes(user.id)
   );
 
-
   return (
     <section className="w-full">
       {isUserLoading && !users ? (
@@ -39,8 +38,7 @@ export const StoryCard = () => {
                   width={500}
                   height={500}
                   alt="user-story"
-                  className={`border-2 border-amber-400 w-16 h-16 rounded-full object-cover object-top `
-                  }
+                  className={`border-2 border-amber-400 w-16 h-16 rounded-full object-cover object-top `}
                 />
                 <h2 className="text-sm truncate w-20 text-zinc-300 mt-2 text-center">
                   Your Story
@@ -61,7 +59,7 @@ export const StoryCard = () => {
                     alt="story"
                     className={`${
                       user.stories.length > 0
-                        ? "border-2 border-primary-Eleevan"
+                        ? "border-2 border-primary-600"
                         : "border-2 border-zinc-400"
                     } w-16 h-16 rounded-full object-cover object-top `}
                   />

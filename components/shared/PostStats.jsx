@@ -56,7 +56,7 @@ export const PostStats = ({post , userId}) => {
            /> 
            <p className="text-md text-white">{shortenNumber(likes.length)}</p>
         </div>
-        <div className="flex flex-row items-center gap-2 text-zinc-100">
+        <div className="flex flex-row items-center gap-2 text-light-2">
           <MessageSquareIcon className="w-5 h-5 "/>
           <span>
           {shortenNumber(post.comments.length)}

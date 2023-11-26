@@ -13,15 +13,15 @@ const Home = () => {
 
   return (
     <>
-    <div className="h-[100vh] overflow-y-scroll custom-scrollbar">
+    <div className="container-scroll">
         <div>
          <StoryCard />
         </div>
         <div className="p-5">
-            <h2 className="font-bold text-left w-full md:text-3xl text-2xl mb-5">Home Feed</h2>
+            <h2 className="h1-bold w-full mb-5 text-light-2">Home Feed</h2>
           <Tabs defaultValue="normal" className="mt-2 mb-3">
-              <TabsList className='w-full bg-zinc-800'>
-                <TabsTrigger value='normal' className='w-full'>Normal</TabsTrigger>
+              <TabsList className='w-full bg-dark-3'>
+                <TabsTrigger value='normal' className='w-full '>Normal</TabsTrigger>
                 <TabsTrigger value='video' className='w-full'>Videos</TabsTrigger>
               </TabsList>
          

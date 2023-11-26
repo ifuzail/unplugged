@@ -15,7 +15,7 @@ export const VideoPostCard = ({ post }) => {
 
   return (
     <div className="bg-zinc-900 rounded-3xl lg:p-4 w-full p-4">
-      <div className="flex flex-row gap-3 text-white justify-between items-center p-3">
+      <div className="flex-between flex-row gap-3 text-light-2  p-3">
         <Link
           href={`/profile/${post.creator.$id}`}
           className="flex flex-row gap-3">
@@ -37,16 +37,16 @@ export const VideoPostCard = ({ post }) => {
         <Link
           href={`/edit-post-video/${post.$id}`}
           className={`${user.id !== post.creator.$id && "hidden"}`}>
-          <EditIcon className="w-5 text-primary-Eleevan hover:text-zinc-200" />
+          <EditIcon className="w-5 text-primary-600" />
         </Link>
       </div>
       <div>
         <Link href={`/post/${post.$id}`}>
-          <div className="py-5">
-            <p className="text-zinc-200 text-xl font-semibold hover:underline">
+          <div className="py-5 px-10">
+            <p className="text-light-2 md:h3-bold base-semibold hover:underline">
               {post.caption}
             </p>
-            <ul className="flex gap-1 mt-2 text-zinc-300 flex-wrap">
+            <ul className="flex gap-1 mt-2 text-light-3 flex-wrap">
               {post.tags.map((tag, index) => (
                 <li key={`${tag}${index}`}>#{tag}</li>
               ))}
@@ -58,8 +58,8 @@ export const VideoPostCard = ({ post }) => {
         <VideoPlayer videoUrl={post?.videoUrl} imageUrl={post?.imageUrl} />
       </div>
       <div className="p-5">
-          <PostStats post={post} userId={user.id} />
-        </div>
+        <PostStats post={post} userId={user.id} />
+      </div>
     </div>
   );
 };

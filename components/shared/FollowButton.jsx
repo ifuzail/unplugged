@@ -44,7 +44,7 @@ export const FollowButton = ({ currentUser }) => {
 
   return (
     <div className="mt-4">
-      <Button onClick={(e) => handleFollowUser(e)} variant='secondary' className={isAlreadyFollowing ? 'bg-transparent border-2 border-primary-Eleevan text-zinc-100 hover:bg-zinc-900 hover:border-primary-Eleevan/60 transition-all' : 'bg-primary-Eleevan border-none hover:bg-primary-Eleevan/60'}>
+      <Button onClick={(e) => handleFollowUser(e)} className={isAlreadyFollowing ? 'bg-transparent border-2 border-primary-500 text-primary-500 transition-all base-medium ' : 'bg-primary-600 border-none hover:bg-primary-500 base-medium text-dark-4'}>
         { isAlreadyFollowing ? 'Following' : 'Follow'}
       </Button>
     </div>

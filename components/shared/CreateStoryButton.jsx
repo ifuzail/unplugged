@@ -17,13 +17,13 @@ export const CreateStoryButton = () => {
   }
   return (
     <div className="p-3">
-       <div className="flex flex-row gap-4 relative p-3 hover:shadow-lg shadow-black hover:scale-105 transition-all">
+       <div className="create-story-btn relative">
         <Image
          src={user?.imageUrl || '/default-user.png'}
          width={500}
          height={500}
          alt="user-create-story"
-         className="w-16 h-16 object-cover object-top rounded-2xl "
+         className="w-16 h-16 object-cover object-top rounded-2xl"
         />
 
         <div className="flex flex-col gap-2">

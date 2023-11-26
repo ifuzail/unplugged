@@ -76,7 +76,7 @@ const StoryDetails = () => {
                 onClick={handleDeleteStory}
                 type="button"
                 className={user.id !== story?.user.$id && "hidden"}>
-                <Trash className="w-5 h-5 text-red-600 hover:text-red-500" />
+                <Trash className="w-5 h-5 text-red " />
               </Button>
             </div>
           </div>
