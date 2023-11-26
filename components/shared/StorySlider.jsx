@@ -4,9 +4,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Trash, XCircleIcon } from "lucide-react";
+import { PlusCircle, Trash, XCircleIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 export const StorySlider = ({ stories, user }) => {
   const router = useRouter();
@@ -22,6 +23,19 @@ export const StorySlider = ({ stories, user }) => {
 
   return (
     <section className="p-5 w-full flex justify-center md:mt-0 mt-10 relative">
+      {stories?.length === 0 ? (
+       <div className="flex flex-col justify-center items-center absolute top-44">
+       <p className="p-5 text-center text-zinc-400 text-sm">No stories. Please create one.</p>
+       <Link href={`/create-story`}>
+         <Button 
+           variant='secondary'
+           className='text-xs'
+         >
+          <PlusCircle className="w-5 h-5 mr-2"/> Create Story
+         </Button>
+       </Link>
+     </div>
+      ) : (
       <div className="md:w-[500px] ">
         <Carousel
           autoPlay
@@ -67,6 +81,7 @@ export const StorySlider = ({ stories, user }) => {
           </div>
         </Link>
       </div>
+      )}
     </section>
   );
 };

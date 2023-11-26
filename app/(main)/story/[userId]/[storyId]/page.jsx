@@ -40,7 +40,7 @@ const StoryDetails = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 overflow-y-auto h-screen no-scrollbar">
       {isloadingStory ? (
         <Loading />
       ) : (
@@ -51,7 +51,7 @@ const StoryDetails = () => {
             width={500}
             height={500}
             alt="story-details"
-            className="rounded-[24px] object-cover mb-5 w-full h-[450px] object-top"
+            className="rounded-[24px] object-cover mb-5 w-full h-[500px] object-top"
           />
           <div className="flex flex-row justify-between gap-5 px-5">
             <Link

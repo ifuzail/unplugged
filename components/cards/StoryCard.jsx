@@ -24,7 +24,6 @@ export const StoryCard = () => {
     creator?.followers?.includes(user.id)
   );
 
-  const currentUser = users?.documents?.filter((creator) => creator?.$id === user.id)
 
   return (
     <section className="w-full">
@@ -36,11 +35,11 @@ export const StoryCard = () => {
             <Link href={`/story/${user.id}`}>
               <div className="flex flex-col items-center">
                 <Image
-                  src={user?.imageUrl || "/default-user.png"}
+                  src={user.imageUrl || "/default-user.png"}
                   width={500}
                   height={500}
                   alt="user-story"
-                  className={`${currentUser?.stories?.length === 0 ? 'border-2 border-zinc-400' : 'border-2 border-primary-Eleevan'} w-16 h-16 rounded-full object-cover object-top `
+                  className={`border-2 border-amber-400 w-16 h-16 rounded-full object-cover object-top `
                   }
                 />
                 <h2 className="text-sm truncate w-20 text-zinc-300 mt-2 text-center">
