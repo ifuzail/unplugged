@@ -7,6 +7,7 @@ import { Topbar } from "@/app/components/navigation/Topbar";
 import { useUserContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { Loading } from "../components/shared/Loading";
+import { useEffect } from "react";
 
 
 const MainLayout = ({ children }) => {
