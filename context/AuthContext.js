@@ -34,6 +34,7 @@ const AuthProvider = ({children}) => {
     const router = useRouter();
 
     const checkAuthUser = async () => {
+      setIsLoading(true);
         try {
          const currentAccount = await getCurrentUser();
          

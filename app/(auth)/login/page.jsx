@@ -53,7 +53,7 @@ const LoginPage = () => {
       router.push("/");
     } else {
       return toast({
-        title: "Sign up failed. Please try again",
+        title: "Login failed. Please try again",
       });
     }
   };
