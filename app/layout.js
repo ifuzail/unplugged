@@ -2,7 +2,6 @@ import "./globals.css";
 import { Toaster } from "@/app/components/ui/toaster";
 import AuthProvider from "@/context/AuthContext";
 import { QueryProvider } from "@/lib/react-query/QueryProvider";
-import Head from "next/head";
 
 export const metadata = {
   title: "Eleevan | social media platform built ontop of Next js.",
