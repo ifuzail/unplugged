@@ -12,11 +12,13 @@ const MainLayout = ({ children }) => {
 
   const router = useRouter();
   const { isAuthenticated } = useUserContext();
+
+  if (isAuthenticated) {
+    router.push("/");
+    return null;
+  }
+
   return (
-    <>
-      {isAuthenticated ? (
-        router.push("/")
-      ) : (
         <div className="flex flex-row gap-1">
           <LeftSidebar />
           <div className="md:w-[50%] w-full flex flex-col justify-between">
@@ -28,8 +30,6 @@ const MainLayout = ({ children }) => {
           </div>
           <RightSidebar />
         </div>
-      )}
-    </>
   );
 };
 
