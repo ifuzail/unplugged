@@ -1,27 +1,34 @@
-"use client"
+"use client";
 
 import { BottomBar } from "@/components/navigation/BottomBar";
 import { LeftSidebar } from "@/components/navigation/LeftSidebar";
 import { RightSidebar } from "@/components/navigation/RightSidebar";
 import { Topbar } from "@/components/navigation/Topbar";
+import { useUserContext } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 
 const MainLayout = ({ children }) => {
-
-    return (
-      <>
-      <div className="flex flex-row gap-1">
-        <LeftSidebar />
-        <div className="md:w-[50%] w-full flex flex-col justify-between">
-          <div className="flex flex-col">
-            <Topbar />
-            <div className="md:mt-0 mt-16 md:mb-0 mb-12">{children}</div>
-            <BottomBar />
+  const router = useRouter();
+  const { isAuthenticated } = useUserContext();
+  return (
+    <>
+      {isAuthenticated ? (
+        router.push("/")
+      ) : (
+        <div className="flex flex-row gap-1">
+          <LeftSidebar />
+          <div className="md:w-[50%] w-full flex flex-col justify-between">
+            <div className="flex flex-col">
+              <Topbar />
+              <div className="md:mt-0 mt-16 md:mb-0 mb-12">{children}</div>
+              <BottomBar />
+            </div>
           </div>
+          <RightSidebar />
         </div>
-        <RightSidebar />
-      </div>
+      )}
     </>
-    );
-  }
+  );
+};
 
 export default MainLayout;
