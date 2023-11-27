@@ -1,98 +1,84 @@
-"use client"
+"use client";
 
-import { getCurrentUser } from '@/lib/app-write/api';
-import { useRouter } from 'next/navigation';
-import { createContext, useContext, useEffect, useState } from 'react'
+import { getCurrentUser } from "@/lib/app-write/api";
+import { useRouter } from "next/navigation";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const INITIAL_USER = {
-    id: '' ,
-    name: '',
-    username: '',
-    email: '',
-    imageUrl: '', 
-    bio: '' ,  
-}
+  id: "",
+  name: "",
+  username: "",
+  email: "",
+  imageUrl: "",
+  bio: "",
+};
 
 const INITIAL_STATE = {
-    user: INITIAL_USER,
-    isLoading: false,
-    isAuthenticated: false,
-    setUser: () => {},
-    setIsAuthenticated: () => {},
-    checkAuthUser: async () => false,
-}
+  user: INITIAL_USER,
+  isLoading: false,
+  isAuthenticated: false,
+  setUser: () => {},
+  setIsAuthenticated: () => {},
+  checkAuthUser: async () => false,
+};
 
 const AuthContext = createContext(INITIAL_STATE);
 
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(INITIAL_USER);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-const AuthProvider = ({children}) => {
+  const router = useRouter();
 
-    const [user, setUser] = useState(INITIAL_USER)
-    const [isLoading, setIsLoading] = useState(false)
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const checkAuthUser = async () => {
+    setIsLoading(true);
+    try {
+      const currentAccount = await getCurrentUser();
 
-    const router = useRouter();
+      if (currentAccount) {
+        setUser({
+          id: currentAccount.$id,
+          name: currentAccount.name,
+          username: currentAccount.username,
+          email: currentAccount.email,
+          imageUrl: currentAccount.imageUrl,
+          bio: currentAccount.bio,
+        });
 
-    const checkAuthUser = async () => {
-      setIsLoading(true);
-        try {
-         const currentAccount = await getCurrentUser();
-         
-         if(currentAccount) {
-            setUser({
-                id: currentAccount.$id,
-                name:currentAccount.name,
-                username: currentAccount.username,
-                email: currentAccount.email,
-                imageUrl: currentAccount.imageUrl,
-                bio: currentAccount.bio
-            })
+        setIsAuthenticated(true);
 
-            setIsAuthenticated(true)
+        return true;
+      }
 
-            return true;
-         }
-
-         return false;
-
-        } catch (error) {
-            console.log(error)
-            return false;
-        } finally {
-            setIsLoading(false);
-        }
+      return false;
+    } catch (error) {
+      console.log(error);
+      return false;
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    useEffect(() => {
+  useEffect(() => {
     const cookieFallback = localStorage.getItem("cookieFallback");
-    if (
-      cookieFallback === "[]" ||
-      cookieFallback === null ||
-      cookieFallback === undefined
-    ) {
+    if (cookieFallback === "[]") {
       router.push("/login");
     }
-
     checkAuthUser();
-  }, [isAuthenticated]);
-    
-    const value = {
-        user,
-        setUser,
-        isLoading,
-        isAuthenticated,
-        setIsAuthenticated,
-        checkAuthUser
-    }
+  }, []);
 
+  const value = {
+    user,
+    setUser,
+    isLoading,
+    isAuthenticated,
+    setIsAuthenticated,
+    checkAuthUser,
+  };
 
-
-  return (
-    <AuthContext.Provider value={value}>
-       {children}
-    </AuthContext.Provider>
-  )
-}
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
 
 export default AuthProvider;
 
