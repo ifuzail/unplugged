@@ -4,19 +4,9 @@ import { BottomBar } from "@/app/components/navigation/BottomBar";
 import { LeftSidebar } from "@/app/components/navigation/LeftSidebar";
 import { RightSidebar } from "@/app/components/navigation/RightSidebar";
 import { Topbar } from "@/app/components/navigation/Topbar";
-import { useUserContext } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-
 
 const MainLayout = ({ children }) => {
 
-  const router = useRouter();
-  const {isAuthenticated} = useUserContext();
-
-  if(isAuthenticated) {
-      router.push('/login')
-      return null
-  } else {
       return (
             <div className="flex flex-row gap-1">
               <LeftSidebar />
@@ -30,8 +20,6 @@ const MainLayout = ({ children }) => {
               <RightSidebar />
             </div>
       );
-  }
-  
 };
 
 export default MainLayout;
