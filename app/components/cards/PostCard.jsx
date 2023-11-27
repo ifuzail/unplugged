@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import { multiFormatDateString } from "@/lib/utils";

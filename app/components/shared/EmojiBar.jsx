@@ -1,3 +1,4 @@
+"use client"
 
 import EmojiPicker from "@emoji-mart/react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";

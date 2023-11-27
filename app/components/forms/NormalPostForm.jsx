@@ -27,6 +27,7 @@ import { EmojiBar } from "../shared/EmojiBar";
 export const NormalPostForm = ({ post, action }) => {
 
   const router = useRouter();
+  
   const { toast } = useToast();
   const { user } = useUserContext();
   

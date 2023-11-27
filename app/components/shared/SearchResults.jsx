@@ -1,3 +1,5 @@
+"use client"
+
 import { GridPostList } from "./GridPostList";
 import {Loading} from "./Loading";
 

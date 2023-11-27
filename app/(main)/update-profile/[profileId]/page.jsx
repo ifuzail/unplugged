@@ -17,7 +17,7 @@ import { ProfileValidation } from "@/lib/validations";
 import { useGetUserById, useUpdateUser } from "@/lib/react-query/queryAndMutation";
 import { Loading } from "@/app/components/shared/Loading";
 import { Edit2Icon } from "lucide-react";
-import { ProfileUploader } from "@/app/components/shared/ProfileUploader";
+import { ProfileUploader } from "@/app/components/uploaders/ProfileUploader";
 import { Button } from "@/app/components/ui/button";
 import { Textarea } from "@/app/components/ui/textarea";
 import { Input } from "@/app/components/ui/input";

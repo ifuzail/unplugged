@@ -8,6 +8,7 @@ import { useSignOutAccount } from "@/lib/react-query/queryAndMutation";
 import { useEffect } from "react";
 
 export const Navlinks = () => {
+  
   const router = useRouter();
   const { mutateAsync: signOut, isSuccess } = useSignOutAccount();
   const pathname = usePathname();

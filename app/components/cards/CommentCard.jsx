@@ -1,3 +1,5 @@
+"use client"
+
 import { useGetRecentComments } from "@/lib/react-query/queryAndMutation";
 import { multiFormatDateString } from "@/lib/utils";
 import Image from "next/image";
