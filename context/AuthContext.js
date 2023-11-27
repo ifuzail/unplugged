@@ -63,15 +63,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const cookieFallback = localStorage.getItem("cookieFallback");
     if (
-      (cookieFallback === "[]" || cookieFallback === null || cookieFallback === undefined) &&
-      !isAuthenticated // Redirect only if not authenticated
-    ) {
+      cookieFallback === "[]" ||
+      cookieFallback === null ||
+      cookieFallback === undefined
+      ) {
       router.push("/login");
     }
-    // Run the authentication check only if necessary (for instance, when not already authenticated)
-    if (!isAuthenticated) {
-      checkAuthUser();
-    }
+    checkAuthUser();
   }, [checkAuthUser]);
 
   const value = {
