@@ -60,6 +60,7 @@ export const CommentForm = ({ post }) => {
           <Image
             width={500}
             height={500}
+            alt="user-profile-image"
             src={user?.imageUrl || "/default-user.png"}
             className="w-16 h-16 rounded-xl object-cover object-top"
           />

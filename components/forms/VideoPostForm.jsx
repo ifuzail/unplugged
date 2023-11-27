@@ -156,7 +156,7 @@ export const VideoPostForm = ({ videoPost, action }) => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="shad-form_label">Add Tags (separated by comma " , ")</FormLabel>
+              <FormLabel className="shad-form_label"> Add Tags (separated by comma &quot; , &quot;)</FormLabel>
               <FormControl>
                 <Input
                   {...field}

@@ -33,10 +33,10 @@ export const FollowerList = () => {
           {followers
             .filter((follower) => follower.$id !== user.id)
             .map((follower) => (
-              <Link href={`/profile/${follower.$id}`}>
+              <Link href={`/profile/${follower.$id}`}  key={follower.$id}>
                 <div
                   className="flex flex-row items-center md:gap-3 bg-light-3 p-3 rounded-full justify-start gap-5"
-                  key={follower.$id}>
+                 >
                   <Image
                     src={follower?.imageUrl || "/default-user.png"}
                     width={500}

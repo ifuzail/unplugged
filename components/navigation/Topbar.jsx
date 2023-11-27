@@ -23,7 +23,7 @@ export const Topbar = () => {
     if (isSuccess) {
       router.push("/login");
     }
-  }, [isSuccess]);
+  }, [isSuccess, router]);
 
   return (
     <section className="topbar md:hidden block">
@@ -68,7 +68,7 @@ export const Topbar = () => {
                       </SheetClose>
                       <hr className="border border-zinc-800 w-full mt-5 mb-5" />
                       <p className="h3-bold text-light-3 text-center">
-                        Folks, you're following
+                        Folks, you&apos;re following
                       </p>
                       <FollowerList />
                     </div>

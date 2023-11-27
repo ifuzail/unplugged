@@ -50,8 +50,8 @@ export const StoryCard = () => {
           {followerStories
             ?.filter((user) => user?.stories?.length !== 0)
             .map((user) => (
-              <Link href={`/story/${user.$id}`}>
-                <div className="flex flex-col items-center" key={user.$id}>
+              <Link href={`/story/${user.$id}`}  key={user.$id}>
+                <div className="flex flex-col items-center">
                   <Image
                     src={user?.imageUrl || "/default-user.png"}
                     width={500}

@@ -9,7 +9,7 @@ export const StoryList = ({user}) => {
   return (
     <ul className="grid md:grid-cols-3 grid-cols-2 gap-2 p-5">
       {user?.stories?.map((story) => (
-      <Link href={`/story/${user?.$id}/${story?.$id}`}>
+      <Link href={`/story/${user?.$id}/${story?.$id}`} key={user?.$id}>
         <Image
           src={story?.imageUrl}
           width={500}
