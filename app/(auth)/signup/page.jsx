@@ -141,7 +141,7 @@ const SignUpPage = () => {
                 )}
               />
         
-              <Button type="submit" className="shad-button_primary">
+              <Button type="submit" className="shad-button_primary" onSubmit={onSubmit}>
                 {isCreatingAccount || isSigningIn || isUserLoading ? (
                   <div  className="flex-center gap-2">
                     <Loading /> Loading...

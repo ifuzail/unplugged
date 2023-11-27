@@ -103,7 +103,7 @@ const LoginPage = () => {
                 )}
               />
               <div className="py-2">
-                <Button type="submit" className="shad-button_primary">
+                <Button type="submit" className="shad-button_primary" onSubmit={onSubmit}>
                   {isUserLoading ? (
                     <div>Loading...</div>
                   ) : (
