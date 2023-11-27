@@ -13,9 +13,8 @@ const MainLayout = ({ children }) => {
   const router = useRouter();
   const {isAuthenticated} = useUserContext();
 
-  if(!isAuthenticated) {
-      router.push('/login')
-  } 
+  if(isAuthenticated) {
+  
       return (
             <div className="flex flex-row gap-1">
               <LeftSidebar />
@@ -28,7 +27,9 @@ const MainLayout = ({ children }) => {
               </div>
               <RightSidebar />
             </div>
-      );
+      )} else {
+          router.push('/')
+      }
 };
 
 export default MainLayout;
