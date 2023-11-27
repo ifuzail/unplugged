@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => {
   const router = useRouter();
   const {isAuthenticated} = useUserContext();
 
-  if(isAuthenticated) {
+  if(!isAuthenticated) {
       router.push('/login')
   } 
       return (
