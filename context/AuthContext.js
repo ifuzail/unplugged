@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
     if (!isAuthenticated) {
       checkAuthUser();
     }
-  }, [isAuthenticated]);
+  }, [checkAuthUser]);
 
   const value = {
     user,
