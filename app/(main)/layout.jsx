@@ -11,10 +11,10 @@ import { useRouter } from "next/navigation";
 const MainLayout = ({ children }) => {
 
   const router = useRouter();
-  const { isAuthenticated } = useUserContext();
+  const { user } = useUserContext();
 
-  if (isAuthenticated) {
-    router.push("/");
+  if (!user) {
+    router.push("/login");
     return null;
   }
 
