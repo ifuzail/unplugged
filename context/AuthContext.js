@@ -74,7 +74,7 @@ const AuthProvider = ({children}) => {
     }
 
     checkAuthUser();
-  }, []);
+  }, [isAuthenticated]);
     
     const value = {
         user,

@@ -6,7 +6,6 @@ import { RightSidebar } from "@/app/components/navigation/RightSidebar";
 import { Topbar } from "@/app/components/navigation/Topbar";
 
 const MainLayout = ({ children }) => {
-
       return (
             <div className="flex flex-row gap-1">
               <LeftSidebar />
