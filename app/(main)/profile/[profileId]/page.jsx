@@ -1,10 +1,10 @@
 "use client";
 
-import { FollowButton } from "@/components/custombuttons/FollowButton";
-import { GridPostList } from "@/components/shared/GridPostList";
-import { Loading } from "@/components/shared/Loading";
-import { StoryList } from "@/components/shared/StoryList";
-import { Button } from "@/components/ui/button";
+import { FollowButton } from "@/app/components/custombuttons/FollowButton";
+import { GridPostList } from "@/app/components/shared/GridPostList";
+import { Loading } from "@/app/components/shared/Loading";
+import { StoryList } from "@/app/components/shared/StoryList";
+import { Button } from "@/app/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import {
   useGetUserById,

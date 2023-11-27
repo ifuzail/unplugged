@@ -1,7 +1,7 @@
 "use client";
 
-import { Loading } from "@/components/shared/Loading";
-import { Button } from "@/components/ui/button";
+import { Loading } from "@/app/components/shared/Loading";
+import { Button } from "@/app/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import {
   useDeleteStory,

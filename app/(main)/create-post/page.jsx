@@ -1,9 +1,9 @@
 "use client";
 
-import { VideoPostForm } from "@/components/forms/VideoPostForm";
-import { NormalPostForm } from "@/components/forms/NormalPostForm";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { VideoPostForm } from "@/app/components/forms/VideoPostForm";
+import { NormalPostForm } from "@/app/components/forms/NormalPostForm";
+import { ScrollArea } from "@/app/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs";
 import { ImageIcon, PencilIcon, Video } from "lucide-react";
 
 const CreatePost = () => {
@@ -19,26 +19,26 @@ const CreatePost = () => {
 
       <div className="w-full">
         <Tabs defaultValue="Normal" className="w-full">
-          <TabsList>
-            <TabsTrigger
-              value="Normal"
-              className="w-36 flex flex-row items-center gap-1">
-              <h3>Normal</h3>
-              <PencilIcon size={15} />
-            </TabsTrigger>
-            <TabsTrigger
-              value="Video"
-              className="w-36 flex flex-row items-center gap-1">
-              <h3>Video</h3>
-              <Video size={15} />
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="Normal">
-            <NormalPostForm action="create" />
-          </TabsContent>
-          <TabsContent value="Video">
-            <VideoPostForm action="create" />
-          </TabsContent>
+            <TabsList>
+              <TabsTrigger
+                value="Normal"
+                className="w-36 flex flex-row items-center gap-1">
+                <h3>Normal</h3>
+                <PencilIcon size={15} />
+              </TabsTrigger>
+              <TabsTrigger
+                value="Video"
+                className="w-36 flex flex-row items-center gap-1">
+                <h3>Video</h3>
+                <Video size={15} />
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="Normal">
+                 <NormalPostForm action="create" />
+            </TabsContent>
+            <TabsContent value="Video">
+                 <VideoPostForm action="create" />
+            </TabsContent>
         </Tabs>
       </div>
     </ScrollArea>

@@ -1,9 +1,9 @@
 "use client";
 
-import { GridPostList } from "@/components/shared/GridPostList";
-import { Loading } from "@/components/shared/Loading";
-import { SearchResults } from "@/components/shared/SearchResults";
-import { Input } from "@/components/ui/input";
+import { GridPostList } from "@/app/components/shared/GridPostList";
+import { Loading } from "@/app/components/shared/Loading";
+import { SearchResults } from "@/app/components/shared/SearchResults";
+import { Input } from "@/app/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
 import {
   useGetPosts,

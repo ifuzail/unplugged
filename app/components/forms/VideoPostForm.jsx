@@ -1,65 +1,63 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/app/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/app/components/ui/form";
+import { Input } from "@/app/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "../ui/textarea";
-import { FileUploader } from "../uploaders/FileUploader";
-import { NormalPostValidation } from "@/lib/validations";
+import { VideoPostValidation } from "@/lib/validations";
 import { useUserContext } from "@/context/AuthContext";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import {
-  useCreatePost,
-  useUpdatePost,
+  useCreateVideoPost,
+  useUpdateVideoPost,
 } from "@/lib/react-query/queryAndMutation";
+import { VideoFileUploader } from "../uploaders/VideoFileUploader";
+import { FileUploader } from "../uploaders/FileUploader";
 import { EmojiBar } from "../shared/EmojiBar";
 
-export const NormalPostForm = ({ post, action }) => {
+export const VideoPostForm = ({ videoPost, action }) => {
+
   const router = useRouter();
   const { toast } = useToast();
   const { user } = useUserContext();
-  const { mutateAsync: createPost, isPending: isLoadingCreate } =
-    useCreatePost();
-  const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
-    useUpdatePost();
+
+  const { mutateAsync: createVideoPost, isPending: isLoadingCreate } =
+    useCreateVideoPost();
+  const { mutateAsync: updateVideoPost, isPending: isLoadingUpdate } =
+    useUpdateVideoPost();
 
   const form = useForm({
-    resolver: zodResolver(NormalPostValidation),
+    resolver: zodResolver(VideoPostValidation),
     defaultValues: {
-      caption: post ? post?.caption : "",
-      file: [],
-      location: post ? post?.location : "",
-      tags: post ? post.tags.join(",") : "",
+      caption: videoPost ? videoPost?.caption : "",
+      videoFile: [],
+      location: videoPost ? videoPost?.location : "",
+      tags: videoPost ? videoPost.tags.join(",") : "",
+      imageFile: [],
     },
   });
 
   const onSubmit = async (values) => {
-    if (post && action === "update") {
-      const updatedPost = await updatePost({
+    if (videoPost && action === "update") {
+      const updatedVideoPost = await updateVideoPost({
         ...values,
-        postId: post.$id,
-        imageId: post?.imageId,
-        imageUrl: post?.imageUrl,
+        videoPostId: videoPost.$id,
+        videoUrl: videoPost?.videoUrl,
+        videoId: videoPost?.videoId,
+        imageId: videoPost?.imageId,
+        imageUrl: videoPost?.imageUrl,
       });
 
-      if (!updatedPost) {
+      if (!updatedVideoPost) {
         toast({ title: "please try again" });
       }
 
-      return router.push(`/post/${post.$id}`);
+      return router.push(`/post/${videoPost.$id}`);
     }
-
-    const newPost = await createPost({
+    const newPost = await createVideoPost({
       ...values,
       userId: user.id,
     });
@@ -87,8 +85,8 @@ export const NormalPostForm = ({ post, action }) => {
               <FormControl>
                 <div className="relative">
                   <Textarea
+                    placeholder="caption"
                     {...field}
-                    placeholder="caption..."
                     className="shad-textarea custom-scrollbar"
                   />
                   <div className="absolute top-7 right-4 z-10">
@@ -100,23 +98,39 @@ export const NormalPostForm = ({ post, action }) => {
                   </div>
                 </div>
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="file"
+          name="videoFile"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="shad-form_label">Add Photos</FormLabel>
+              <FormLabel>Add Videos</FormLabel>
+              <FormControl>
+                <VideoFileUploader
+                  fieldChange={field.onChange}
+                  mediaUrl={videoPost?.videoUrl}
+                />
+              </FormControl>
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="imageFile"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="shad-form_label">Add Thumbnail</FormLabel>
               <FormControl>
                 <FileUploader
                   fieldChange={field.onChange}
-                  mediaUrl={post?.imageUrl}
+                  mediaUrl={videoPost?.imageUrl}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
@@ -127,9 +141,13 @@ export const NormalPostForm = ({ post, action }) => {
             <FormItem>
               <FormLabel className="shad-form_label">Add Location</FormLabel>
               <FormControl>
-                <Input type="text" className="shad-input" {...field} />
+                <Input
+                   type="text"
+                   className="shad-input"
+                  {...field}
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
@@ -138,9 +156,7 @@ export const NormalPostForm = ({ post, action }) => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="shad-form_label">
-                Add Tags (separated by comma &quot; , &quot;)
-              </FormLabel>
+              <FormLabel className="shad-form_label"> Add Tags (separated by comma &quot; , &quot;)</FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -149,12 +165,15 @@ export const NormalPostForm = ({ post, action }) => {
                   placeholder="Cats, Dogs, Birds..."
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="shad-form_message" />
             </FormItem>
           )}
         />
-        <div className="flex flex-row gap-2 ">
-          <Button onClick={() => router.back()} type="button" variant="ghost">
+        <div className="flex items-center flex-row gap-2">
+          <Button onClick={() => router.back()}
+           type="button" 
+           variant="ghost"
+           >
             Cancel
           </Button>
           <Button

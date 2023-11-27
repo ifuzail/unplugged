@@ -1,11 +1,11 @@
 "use client"
 
-import { VideoPostCard } from "@/components/cards/VideoPostCard";
-import { PostCard } from "@/components/cards/PostCard";
-import {Loading} from "@/components/shared/Loading"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { VideoPostCard } from "@/app/components/cards/VideoPostCard";
+import { PostCard } from "@/app/components/cards/PostCard";
+import {Loading} from "@/app/components/shared/Loading"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs";
 import { useGetRecentPosts } from "@/lib/react-query/queryAndMutation"
-import {StoryCard} from "@/components/cards/StoryCard";
+import {StoryCard} from "@/app/components/cards/StoryCard";
 
 const Home = () => {
 

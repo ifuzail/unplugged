@@ -16,7 +16,7 @@ export const Navlinks = () => {
     if (isSuccess) {
       router.push("/login");
     }
-  }, [isSuccess, router]);
+  }, [isSuccess]);
 
   return (
     <div className="flex flex-col">

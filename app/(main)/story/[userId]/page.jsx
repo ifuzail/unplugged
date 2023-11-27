@@ -1,9 +1,9 @@
 "use client"
 
-import { Loading } from "@/components/shared/Loading"
-import {StorySlider} from "@/components/shared/StorySlider"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogOverlay } from "@/components/ui/dialog"
+import { Loading } from "@/app/components/shared/Loading"
+import {StorySlider} from "@/app/components/shared/StorySlider"
+import { Button } from "@/app/components/ui/button"
+import { Dialog, DialogOverlay } from "@/app/components/ui/dialog"
 import { useGetUserById } from "@/lib/react-query/queryAndMutation"
 import { useParams } from "next/navigation"
 

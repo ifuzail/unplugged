@@ -1,15 +1,15 @@
 "use client";
 
-import { AllUsersCard } from "@/components/cards/AllUsersCard";
-import { Loading } from "@/components/shared/Loading";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useToast } from "@/components/ui/use-toast";
+import { AllUsersCard } from "@/app/components/cards/AllUsersCard";
+import { Loading } from "@/app/components/shared/Loading";
+import { ScrollArea } from "@/app/components/ui/scroll-area";
+import { useToast } from "@/app/components/ui/use-toast";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUsers } from "@/lib/react-query/queryAndMutation";
 
 const Folks = () => {
-  const { toast } = useToast();
 
+  const { toast } = useToast();
   const { user } = useUserContext();
 
   const { data: creators, isPending, isError: isErrorCreators } = useGetUsers();

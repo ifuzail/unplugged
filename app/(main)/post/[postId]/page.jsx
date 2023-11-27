@@ -1,9 +1,9 @@
 "use client";
 
-import { Loading } from "@/components/shared/Loading";
-import { PostStats } from "@/components/shared/PostStats";
-import { CommentCard } from "@/components/cards/CommentCard";
-import { CommentForm } from "@/components/forms/CommentForm";
+import { Loading } from "@/app/components/shared/Loading";
+import { PostStats } from "@/app/components/shared/PostStats";
+import { CommentCard } from "@/app/components/cards/CommentCard";
+import { CommentForm } from "@/app/components/forms/CommentForm";
 
 import { useUserContext } from "@/context/AuthContext";
 import { useGetPostById } from "@/lib/react-query/queryAndMutation";
@@ -12,8 +12,8 @@ import { EditIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { VideoPlayer } from "@/components/shared/VideoPlayer";
-import { DeleteButton } from "@/components/custombuttons/DeleteButton";
+import { VideoPlayer } from "@/app/components/shared/VideoPlayer";
+import { DeleteButton } from "@/app/components/custombuttons/DeleteButton";
 
 const PostDetails = () => {
 

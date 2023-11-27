@@ -1,9 +1,9 @@
 "use client";
 
-import { BottomBar } from "@/components/navigation/BottomBar";
-import { LeftSidebar } from "@/components/navigation/LeftSidebar";
-import { RightSidebar } from "@/components/navigation/RightSidebar";
-import { Topbar } from "@/components/navigation/Topbar";
+import { BottomBar } from "@/app/components/navigation/BottomBar";
+import { LeftSidebar } from "@/app/components/navigation/LeftSidebar";
+import { RightSidebar } from "@/app/components/navigation/RightSidebar";
+import { Topbar } from "@/app/components/navigation/Topbar";
 import { useUserContext } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 

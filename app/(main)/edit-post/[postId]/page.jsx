@@ -1,11 +1,11 @@
 "use client";
 
-import { NormalPostForm } from "@/components/forms/NormalPostForm";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { NormalPostForm } from "@/app/components/forms/NormalPostForm";
+import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { ImageIcon, } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useGetPostById } from "@/lib/react-query/queryAndMutation";
-import {Loading} from "@/components/shared/Loading";
+import {Loading} from "@/app/components/shared/Loading";
 
 const EditPost = () => {
 

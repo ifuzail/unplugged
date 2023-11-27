@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import {
   Form,
   FormControl,
@@ -8,13 +8,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/app/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { StoryValidation } from "@/lib/validations";
 import { useUserContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { StoryFileUploader } from "@/components/uploaders/StoryFileUploader";
+import { StoryFileUploader } from "@/app/components/uploaders/StoryFileUploader";
 import { useCreateStory } from "@/lib/react-query/queryAndMutation";
 
 

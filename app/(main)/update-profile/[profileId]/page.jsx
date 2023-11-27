@@ -10,19 +10,19 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-  } from "@/components/ui/form";
-import { useToast } from "@/components/ui/use-toast";
+  } from "@/app/components/ui/form";
+import { useToast } from "@/app/components/ui/use-toast";
 import { useUserContext } from "@/context/AuthContext";
 import { ProfileValidation } from "@/lib/validations";
 import { useGetUserById, useUpdateUser } from "@/lib/react-query/queryAndMutation";
-import { Loading } from "@/components/shared/Loading";
+import { Loading } from "@/app/components/shared/Loading";
 import { Edit2Icon } from "lucide-react";
-import { ProfileUploader } from "@/components/shared/ProfileUploader";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { EmojiBar } from "@/components/shared/EmojiBar";
+import { ProfileUploader } from "@/app/components/shared/ProfileUploader";
+import { Button } from "@/app/components/ui/button";
+import { Textarea } from "@/app/components/ui/textarea";
+import { Input } from "@/app/components/ui/input";
+import { ScrollArea } from "@/app/components/ui/scroll-area";
+import { EmojiBar } from "@/app/components/shared/EmojiBar";
 
 const UpdateProfile = () => {
     const router = useRouter();
