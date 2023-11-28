@@ -58,7 +58,7 @@ const LoginPage = () => {
     }
   };
 
-  if(!isAuthenticated) {
+  if(isAuthenticated) {
     router.push('/')
   }
 
