@@ -59,21 +59,11 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-    const cookieFallback = localStorage.getItem("cookieFallback");
-    if (
-      cookieFallback === "[]" ||
-      cookieFallback === null || 
-      cookieFallback === undefined
-    ) {
-      router.push("/login");
-    }
 
     useEffect(() => {
       checkAuthUser();
     },[])
-    
   
-
 
   const value = {
     user,
