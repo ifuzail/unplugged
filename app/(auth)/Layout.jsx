@@ -5,7 +5,7 @@ export default function AuthLayout({ children }) {
   const router = useRouter();
   const { isAuthenticated } = useUserContext();
 
-  if(isAuthenticated) {
+  if(isAuthenticated === true) {
     router.push('/')
   }
   return (
