@@ -19,7 +19,7 @@ import { LoginForm } from "@/lib/validations";
 const LoginPage = () => {
   const router = useRouter();
   const { toast } = useToast();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser, isLoading: isUserLoading, isAuthenticated } = useUserContext();
 
 
   //mutations//
@@ -57,6 +57,10 @@ const LoginPage = () => {
       });
     }
   };
+
+  if(!isAuthenticated) {
+    router.push('/')
+  }
 
   return (
     <>
