@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { getCurrentUser } from "@/lib/app-write/api";
 import { useRouter } from "next/navigation";
@@ -46,25 +46,35 @@ const AuthProvider = ({ children }) => {
         });
 
         setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
+
+        return true;
       }
+
+      return false;
     } catch (error) {
       console.log(error);
+      return false;
     } finally {
       setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    checkAuthUser();
-  }, []);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    const cookieFallback = localStorage.getItem("cookieFallback");
+    if (
+      cookieFallback === "[]" ||
+      cookieFallback === null || 
+      cookieFallback === undefined
+    ) {
       router.push("/login");
     }
-  }, [isAuthenticated, router]);
+
+    checkAuthUser();
+    
+  }, []);
+  
+
 
   const value = {
     user,

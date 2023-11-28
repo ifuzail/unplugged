@@ -65,7 +65,7 @@ const SignUpPage = () => {
     if (isLoggedIn) {
       form.reset();
       
-      router.push("/login");
+      router.push("/");
     } else {
       return toast({
         title: "Sign up failed. Please try again",
