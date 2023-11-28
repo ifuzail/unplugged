@@ -1,20 +1,28 @@
+"use client"
+
 import { useUserContext } from "@/context/AuthContext"
 import { FaCirclePlus } from "react-icons/fa6";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Loading } from "../shared/Loading";
 
 
 export const CreateStoryButton = () => {
 
  const router = useRouter();
 
-  const { user } = useUserContext();
+  const { user, isLoading:isUserLoading } = useUserContext();
 
   const onclick = () => {
     router.push(`/create-story`)
   }
+
+  if(isUserLoading || !user) {
+    <Loading />
+  }
+
   return (
     <div className="p-3">
        <div className="create-story-btn relative">
