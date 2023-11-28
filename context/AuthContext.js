@@ -32,7 +32,6 @@ const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   const checkAuthUser = async () => {
-    setIsLoading(true);
     try {
       const currentAccount = await getCurrentUser();
 
@@ -65,10 +64,9 @@ const AuthProvider = ({ children }) => {
     const cookieFallback = localStorage.getItem("cookieFallback");
     if (
       cookieFallback === "[]" ||
-      cookieFallback === null ||
-      cookieFallback === undefined
+      cookieFallback === null
     ) {
-      router.push("/signup");
+      router.push("/login");
     }
 
     checkAuthUser();

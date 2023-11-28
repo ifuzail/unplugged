@@ -26,7 +26,7 @@ export const LeftSidebar = () => {
         <Navlinks />
       </div>
       <div className="flex flex-col items-start  gap-2 p-5">
-        {isUserLoading || !user ? (
+        {isUserLoading ? (
           <Loading />
         ) : (
           <Link

@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Toaster } from "@/app/components/ui/toaster";
-import AuthProvider from "@/context/AuthContext";
+import AuthProvider  from "@/context/AuthContext";
 import { QueryProvider } from "@/lib/react-query/QueryProvider";
 
 export const metadata = {
@@ -10,6 +10,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body className="custom-scrollbar">
