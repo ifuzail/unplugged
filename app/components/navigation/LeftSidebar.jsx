@@ -4,10 +4,22 @@ import Image from "next/image";
 import { Navlinks } from "./Navlinks";
 import Link from "next/link";
 import { useUserContext } from "@/context/AuthContext";
-import { Loading } from "../shared/Loading";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export const LeftSidebar = () => {
-  const { user, isLoading: isUserLoading } = useUserContext();
+
+  const router = useRouter();
+  const { user, isAuthenticated, checkAuthUser} = useUserContext();
+
+  useEffect(() => {
+    if(isAuthenticated === false || !user) {
+      router.push('/login')
+    }
+
+    checkAuthUser();
+  }, [])
+  
 
   return (
     <section className="left-sidebar">
@@ -26,9 +38,6 @@ export const LeftSidebar = () => {
         <Navlinks />
       </div>
       <div className="flex flex-col items-start  gap-2 p-5">
-        {isUserLoading ? (
-          <Loading />
-        ) : (
           <Link
             href={`/profile/${user?.id}`}
             className="flex flex-row items-center p-2">
@@ -44,7 +53,6 @@ export const LeftSidebar = () => {
               <p className="text-sm text-zinc-400">@{user?.username}</p>
             </div>
           </Link>
-        )}
       </div>
     </section>
   );
