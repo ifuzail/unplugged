@@ -71,16 +71,17 @@ const LoginPage = () => {
         <div className="flex-center">
           <div className="sm:w-420 flex-center flex-col p-5">
               <Image
-                src="/eleevan-logo-white.svg"
-                width={120}
-                height={120}
+                src="/logo.svg"
+                width={200}
+                height={150}
                 alt="logo"
+                className="bg-primary-600 p-3"
               />
               <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
                 Login to your account
               </h2>
               <p  className="text-light-3 small-medium md:base-regular mt-2">
-              Welcome to Eleevan, Please enter your details
+              Welcome back, Please enter your details
               </p>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">
               <FormField

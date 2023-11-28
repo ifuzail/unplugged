@@ -15,10 +15,10 @@ export const LeftSidebar = () => {
           <Link href="/">
             <Image
               priority
-              width={120}
-              height={100}
-              src="/eleevan-logo-white.svg"
-              alt="left-logo-eleevan"
+              width={200}
+              height={200}
+              src="/logo.svg"
+              alt="left-logo"
             />
           </Link>
         </div>

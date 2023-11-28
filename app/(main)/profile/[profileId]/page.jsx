@@ -63,7 +63,7 @@ const ProfilePage = () => {
               <div className={`${user.id !== currentUser?.$id && "hidden"}`}>
                 <Link
                   href={`/update-profile/${currentUser?.$id}`}
-                  className={`mt-5 h-10 bg-secondary-500 text-dark-3 px-4 py-2 flex justify-center items-center gap-2 rounded-lg font-normal hover:text-primary-Eleevan ${
+                  className={`mt-5 h-10 bg-secondary-500 text-dark-3 px-4 py-2 flex justify-center items-center gap-2 rounded-lg font-normal ${
                     user.id !== currentUser?.$id && "hidden"
                   }`}>
                   <Edit2Icon className="w-4 h-4" />

@@ -75,17 +75,17 @@ const SignUpPage = () => {
 
   return (
       <Form {...form}>
-        <div className="flex-center">
-          <div className="sm:w-420 flex-center flex-col p-5 bg-dark-3">
+        <div className="flex justify-center my-5">
+          <div className="sm:w-420 flex-center flex-col p-7 bg-dark-3">
               <Image 
-                src="/eleevan-logo.svg"
-                width={500}
-                height={500}
+                src="/logo.svg"
+                width={160}
+                height={200}
                 alt="logo"
-                className="w-28"
+                className="bg-primary-500 p-3"
               />
               <h2 className="h3-bold md:h2-bold mt-5 ">Create a new account</h2>
-              <p className="text-light-4 small-medium md:base-regular mt-2">To use eleevan, Please enter your details</p>
+              <p className="text-light-4 small-medium md:base-regular mt-2 text-center">Welcome to Unplugged, Please enter your details</p>
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4" >
               <FormField
@@ -161,13 +161,6 @@ const SignUpPage = () => {
             </p>
             </form>
           </div>
-          <Image 
-          src='/cover-image.jpg'
-          width={1000}
-          height={1000}
-          alt="image"
-          className="hidden xl:block h-screen w-[70%] object-cover opacity-70"
-          />
         </div>
       </Form>
   );

@@ -4,7 +4,7 @@ import AuthProvider  from "@/context/AuthContext";
 import { QueryProvider } from "@/lib/react-query/QueryProvider";
 
 export const metadata = {
-  title: "Eleevan | social media platform built ontop of Next js.",
+  title: "Unplugged | social media platform built ontop of Next js.",
   description:
     "A social media app made with Next js, React Query and appwrite cloud.",
 };

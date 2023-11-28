@@ -29,14 +29,14 @@ export const CreateStoryButton = () => {
 
         <div className="flex flex-col gap-2">
           <Link href={`/profile/${user?.id}`}>
-            <h2 className="font-bold md:text-2xl text-lg text-zinc-200 hover:text-primary-Eleevan transition">
+            <h2 className="font-bold md:text-2xl text-lg text-zinc-200">
               {user?.name}
             </h2>
             <p className="text-sm text-zinc-400">@{user?.username}</p>
           </Link>
         </div>
         <button
-          className="absolute bottom-1 left-14 border-4 rounded-full border-zinc-900 bg-zinc-900 text-primary-Eleevan"
+          className="absolute bottom-1 left-14 border-4 rounded-full border-zinc-900 bg-zinc-900"
           onClick={onclick}>
           <FaCirclePlus size={20} />
         </button>

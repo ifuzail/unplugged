@@ -34,8 +34,8 @@ export const Topbar = () => {
           <>
             <Link href="/">
               <Image
-                src="/eleevan-logo-white.svg"
-                width={100}
+                src="/logo.svg"
+                width={130}
                 height={100}
                 alt="logo"
                 className="p-1"
