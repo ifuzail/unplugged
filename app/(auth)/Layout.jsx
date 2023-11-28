@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 
 export default function AuthLayout({ children }) {
   const router = useRouter();
-  const { isAuthenticated, user } = useUserContext();
+  const { isAuthenticated } = useUserContext();
   return (
     <>
-      {isAuthenticated || user ? (
+      {isAuthenticated ? (
         router.push("/")
       ) : (
         <>
