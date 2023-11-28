@@ -30,18 +30,18 @@ export const LeftSidebar = () => {
           <Loading />
         ) : (
           <Link
-            href={`/profile/${user.id}`}
+            href={`/profile/${user?.id}`}
             className="flex flex-row items-center p-2">
             <Image
               width={200}
               height={200}
-              src={user.imageUrl || "/default-user.png"}
+              src={user?.imageUrl || "/default-user.png"}
               alt="profile-image"
               className="h-12 w-12 rounded-full object-cover object-top"
             />
             <div className="px-3">
-              <h1 className="font-bold text-lg ">{user.name}</h1>
-              <p className="text-sm text-zinc-400">@{user.username}</p>
+              <h1 className="font-bold text-lg ">{user?.name}</h1>
+              <p className="text-sm text-zinc-400">@{user?.username}</p>
             </div>
           </Link>
         )}

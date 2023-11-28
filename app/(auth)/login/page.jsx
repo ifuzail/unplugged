@@ -13,13 +13,14 @@ import { useUserContext } from "@/context/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 import { LoginForm } from "@/lib/validations";
+import { Loading } from "@/app/components/shared/Loading";
 
 
 
 const LoginPage = () => {
   const router = useRouter();
   const { toast } = useToast();
-  const { checkAuthUser, isLoading: isUserLoading, isAuthenticated } = useUserContext();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
 
   //mutations//
@@ -37,30 +38,32 @@ const LoginPage = () => {
   const onSubmit = async (values) => {
 
     const session = await signInAccount({
-      email: values.email,
-      password: values.password,
+      email: values?.email,
+      password: values?.password,
     });
+
     if (!session) {
-      return toast({
-        title: "Sign In failed. Please try again.",
+        toast({
+        title: "Sign In failed. Please try again."
       });
+      return
     }
 
     const isLoggedIn = await checkAuthUser();
 
     if (isLoggedIn) {
       form.reset();
+
       router.push("/");
+
     } else {
-      return toast({
-        title: "Login failed. Please try again",
+       toast({
+        title: "Login failed. Please try again"
       });
+
+      return
     }
   };
-
-  if(isAuthenticated) {
-    router.push('/')
-  }
 
   return (
     <>
@@ -107,9 +110,9 @@ const LoginPage = () => {
                 )}
               />
               <div className="py-2">
-                <Button type="submit" className="shad-button_primary" onSubmit={onSubmit}>
+                <Button type="submit" className="shad-button_primary">
                   {isUserLoading ? (
-                    <div>Loading...</div>
+                    <div><Loading />Log in</div>
                   ) : (
                     "Log in"
                   )}
