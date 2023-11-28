@@ -69,8 +69,9 @@ const AuthProvider = ({ children }) => {
       router.push("/login");
     }
 
-    checkAuthUser();
   }, []);
+  
+  checkAuthUser();
 
 
   const value = {
