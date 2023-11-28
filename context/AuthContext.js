@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
       cookieFallback === null ||
       cookieFallback === undefined
     ) {
-      router.push("/login");
+      router.push("/signup");
     }
 
     checkAuthUser();
