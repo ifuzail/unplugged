@@ -6,9 +6,8 @@ export default function AuthLayout({ children }) {
   const { isAuthenticated } = useUserContext();
 
   if(isAuthenticated) {
-    router.push()
+    router.push('/')
   }
-
   return (
     <>
         <section className="flex flex-1 justify-center items-center flex-col py-10">
