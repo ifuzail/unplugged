@@ -4,22 +4,9 @@ import Image from "next/image";
 import { Navlinks } from "./Navlinks";
 import Link from "next/link";
 import { useUserContext } from "@/context/AuthContext";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 export const LeftSidebar = () => {
-
-  const router = useRouter();
-  const { user, isAuthenticated, checkAuthUser} = useUserContext();
-
-  useEffect(() => {
-    if(isAuthenticated === false || !user) {
-      router.push('/login')
-    }
-
-    checkAuthUser();
-  }, [])
-  
+  const { user} = useUserContext();
 
   return (
     <section className="left-sidebar">
