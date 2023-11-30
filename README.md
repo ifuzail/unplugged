@@ -175,6 +175,6 @@ This is a small example of how appwrite works in a Next js project.
 ## This is Unplugged
 ![ezgif com-gif-to-mp4](https://github.com/ifuzail/unplugged/assets/135622982/5125babb-0b75-4dc4-afe1-49871e745bd4)
 
-
+- don't hesitate to fix bugs related to style, components or logic
 
 
