@@ -23,19 +23,19 @@ const PostDetails = () => {
   const { data: post, isPending } = useGetPostById(postId || "");
 
   return (
-    <div className="p-8 h-[100vh] overflow-y-scroll custom-scrollbar">
+    <div className="md:p-8 p-6 h-[100vh] overflow-y-scroll custom-scrollbar">
       {isPending ? (
         <Loading />
       ) : (
         <section className="flex flex-col items-center gap-4">
           {/* post image */}
-          <div className="md:h-[500px] md:w-[500px] p-7">
+          <div className="md:h-[500px] md:w-[500px] w-full md:p-7">
             {post?.videoUrl === null ? (
               <Image
                 priority
-                className="rounded-[24px] object-cover mb-5 w-full h-[450px] object-top"
+                className="rounded-xl object-cover mb-5 w-full md:h-[450px] h-72 object-top"
                 src={post?.imageUrl}
-                alt="post"
+                alt="post-image"
                 width={500}
                 height={500}
               />
@@ -56,17 +56,17 @@ const PostDetails = () => {
                 height={500}
                 src={post?.creator?.imageUrl || "/default-user.png"}
                 alt="creator"
-                className="rounded-full w-12 h-12 object-cover object-top"
+                className="rounded-full md:w-12 w-10 md:h-12 h-10 object-cover object-top"
               />
               <div className="flex flex-col">
-                <p className="font-bold">{post.creator.name}</p>
-                <div className="flex items-center gap-2 text-zinc-400 font-semibold ">
+                <p className="md:h3-bold base-semibold">{post.creator.name}</p>
+                <div className="flex items-center gap-2 text-zinc-400 md:base-regular small-regular ">
                   <p>{multiFormatDateString(post.$createdAt)}</p>-
                   <p>{post.location}</p>
                 </div>
               </div>
             </Link>
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center">
               <button>
                 <Link
                   href={
@@ -75,7 +75,7 @@ const PostDetails = () => {
                       : `/edit-post-video/${post.$id}`
                   }
                   className={`${user?.id !== post.creator.$id && "hidden"}`}>
-                  <EditIcon className="w-5 text-primary-500 hover:text-primary-600" />
+                  <EditIcon className="md:w-5 w-4 text-primary-500 hover:text-primary-600" />
                 </Link>
               </button>
               <DeleteButton post={post} />
@@ -83,12 +83,12 @@ const PostDetails = () => {
           </div>
           <hr className="border border-zinc-800 w-full mt-5" />
           {/* post details */}
-          <div>
-            <div className="py-5">
-              <p className="text-zinc-200 text-xl font-semibold">
+          <div className="flex flex-col items-center">
+            <div className="p-2 w-full">
+              <p className="text-zinc-200 md:h3-bold small-semibold mb-3">
                 {post.caption}
               </p>
-              <ul className="flex gap-1 mt-2 text-zinc-300">
+              <ul className="flex gap-1 mt-2 text-zinc-300 flex-wrap">
                 {post.tags.map((tag, index) => (
                   <li key={`${tag}${index}`}>#{tag}</li>
                 ))}

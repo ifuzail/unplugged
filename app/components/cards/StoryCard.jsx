@@ -6,6 +6,7 @@ import { Loading } from "../shared/Loading";
 import { toast } from "../ui/use-toast";
 import Link from "next/link";
 import { useUserContext } from "@/context/AuthContext";
+import { Skeleton } from "../ui/skeleton";
 
 export const StoryCard = () => {
   const { user } = useUserContext();
@@ -27,7 +28,9 @@ export const StoryCard = () => {
   return (
     <section className="w-full">
       {isUserLoading && !users ? (
-        <Loading />
+        <div className="p-5">
+          <Skeleton className=' bg-dark-4 w-16 h-16 rounded-full' />
+        </div>
       ) : (
         <div className="flex flex-row p-5 gap-4 mx-2 overflow-x-auto no-scrollbar">
           <div>

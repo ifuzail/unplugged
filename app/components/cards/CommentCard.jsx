@@ -4,6 +4,7 @@ import { useGetRecentComments } from "@/lib/react-query/queryAndMutation";
 import { multiFormatDateString } from "@/lib/utils";
 import Image from "next/image";
 import {Loading} from "../shared/Loading";
+import { Skeleton } from "../ui/skeleton";
 
 export const CommentCard = ({post}) => {
   const { data: comments, isPending: isCommentLoading } =
@@ -12,7 +13,9 @@ export const CommentCard = ({post}) => {
   return (
     
     <section className="p-2 ">
-        {isCommentLoading ? (<Loading /> ) : (
+        {isCommentLoading ? (
+       <Skeleton className='p-5 w-56 h-20 rounded-xl bg-dark-4' /> 
+        ) : (
             <div className="flex flex-col gap-3 justify-start items-start">
                 {comments?.documents.filter((comment) => comment?.posts?.$id === post.$id).map((comment) => (
                     <div key={comment.$id} className="flex flex-row gap-2 items-center">

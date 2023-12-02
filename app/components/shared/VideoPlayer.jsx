@@ -12,9 +12,9 @@ export const VideoPlayer = ({ videoUrl, imageUrl }) => {
           <img
             width={800}
             height={800}
-            src={imageUrl || "/default-video.png"}
+            src={imageUrl}
             alt="video thumbnail"
-            className="w-[640px] h-[360px] object-cover rounded-xl object-top"
+            className="w-[640px] md:h-[360px] h-[300px] object-cover rounded-xl object-top"
           />
         }
         url={videoUrl}

@@ -6,6 +6,7 @@ import { Loading } from "./Loading";
 import Image from "next/image";
 import { toast } from "../ui/use-toast";
 import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
 
 export const FollowerList = () => {
   const { user } = useUserContext();
@@ -27,7 +28,7 @@ export const FollowerList = () => {
   return (
     <section className="w-full">
       {isUserLoading && !users ? (
-        <Loading />
+        <Skeleton className='md:w-full md:h-20 w-full h-16 rounded-full bg-dark-4 p-5 mt-5' />
       ) : (
         <div className="flex flex-col p-5 gap-2 mx-2 overflow-y-auto no-scrollbar">
           {followers
