@@ -12,10 +12,6 @@ When I first started as a web developer, I was always interested in learning new
 
 My decision to create a social media app was simple, I wanted to make a web app full of backend logic and interaction with the UI. But I haven’t started with this mindset. Initially, I was curious to know more about how authentication works in a front-end app. For that, I decided to create a basic layout for authentication. I used to rely on Clerk to streamline the authentication process, but then I came across Appwrite and everything changed. Appwrite, being a full-fledged Baas (backend as a service), still has a lot to offer in terms of learning opportunities. I worked with Appwrite to apply the authentication services that it offers. It took me some hours to set up the auth for my new tiny project. With the right syntax and plundering the documentation I finally made a successful authentication.
 
-## A little assistance from the tutorial
-
-If I said I coded this app all on my own, it would be untrue. I used to be stuck in tutorial hell, relying solely on tutorials to learn how to code. However, when I started working on Steller, I made a conscious decision to seek help from documentation and chatGPT. Even though I reverted back to using a tutorial for building this social media app, I was able to break out of my tutorial dependency and explore other resources to improve my coding skills. Although tutorials can be helpful to some extent, they may not sufficiently develop your logical and creative skills as a developer. I made a conscious decision to develop my app using a different environment than what was used in the tutorial. For example, instead of using React, I opted for Next.js to implement a different routing system and other techniques. While working on my app, I implemented new features to learn more. This led to sculpting a full-stack social media platform.
-
 ## My Appwrite Schemas
 
 ### Schema for User -
