@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Toaster } from "@/app/components/ui/toaster";
 import AuthProvider  from "@/context/AuthContext";
+import { SocketProvider } from "@/context/SocketProvider";
 import { QueryProvider } from "@/lib/react-query/QueryProvider";
 
 export const metadata = {
@@ -15,11 +16,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="custom-scrollbar">
         <main>
-          <QueryProvider>
-            <AuthProvider>
-              { children }
-            </AuthProvider>
-          </QueryProvider>
+          <SocketProvider>
+            <QueryProvider>
+              <AuthProvider>
+                { children }
+              </AuthProvider>
+            </QueryProvider>
+          </SocketProvider>
         </main>
         <Toaster />
       </body>
