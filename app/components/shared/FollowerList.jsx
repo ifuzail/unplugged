@@ -2,7 +2,6 @@
 
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUsers } from "@/lib/react-query/queryAndMutation";
-import { Loading } from "./Loading";
 import Image from "next/image";
 import { toast } from "../ui/use-toast";
 import Link from "next/link";
@@ -30,7 +29,7 @@ export const FollowerList = () => {
       {isUserLoading && !users ? (
         <Skeleton className='md:w-full md:h-20 w-full h-16 rounded-full bg-dark-4 p-5 mt-5' />
       ) : (
-        <div className="flex flex-col p-5 gap-2 mx-2 overflow-y-auto no-scrollbar">
+        <div className="flex flex-col p-5 gap-2 mx-2 ">
           {followers
             .filter((follower) => follower.$id !== user.id)
             .map((follower) => (

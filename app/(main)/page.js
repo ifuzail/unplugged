@@ -2,7 +2,6 @@
 
 import { VideoPostCard } from "@/app/components/cards/VideoPostCard";
 import { PostCard } from "@/app/components/cards/PostCard";
-import {Loading} from "@/app/components/shared/Loading"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs";
 import { useGetRecentPosts } from "@/lib/react-query/queryAndMutation"
 import {StoryCard} from "@/app/components/cards/StoryCard";
@@ -31,9 +30,9 @@ const Home = () => {
                 <Skeleton className='bg-dark-4 rounded-2xl lg:p-5 w-full max-w-screen-sm p-3 h-96'/>
               ) : (
                 <ul className="flex flex-col flex-1 gap-9 w-full mt-5">
-                    {posts?.documents.filter((post) => post.videoUrl === null).map((post) => (
-                      <li key={post.$id} className="flex justify-center w-full">
-                      <PostCard post={post} key={post.caption}/>
+                    {posts?.documents.filter((post) => post?.videoUrl === null).map((post) => (
+                      <li key={post?.$id} className="flex justify-center w-full">
+                      <PostCard post={post} key={post?.caption}/>
                     </li>
                     ))}
                 </ul>

@@ -36,7 +36,7 @@ useEffect(() => {
           <BottomBar />
         </div>
       </div>
-      <RightSidebar />
+       <RightSidebar />
     </div>
   );
 };
